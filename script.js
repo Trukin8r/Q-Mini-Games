@@ -1,8 +1,8 @@
 
-// let computerChoice = "?"
+
 let computerSelection; //for output of getcomputerchoice() function
 let playerSelection = "" ; //for output of getPlayerChoice() function
-let currentround; // counter for current round in playRound() function
+let currentRound; // counter for current round in playRound() function
 let rounds; // total number of rounds to be played - obtained from user input
 let result; // stores the results string after both selections have been compared
 let wins = 0; //stores number of wins per game used to calculate win/loss percentage
@@ -10,7 +10,7 @@ let ties = 0; //stores number of tie rounds, used to calculate win/loss percenta
 
 
 
-function getcomputerchoice() {
+function getComputerChoice() {
     let choice = Math.floor(Math.random() *3) +1;
     if (choice === 1){
         return "Rock";
@@ -25,7 +25,7 @@ function getcomputerchoice() {
 }
 
 function getPlayerChoice() {
-    Pchoice = prompt("Round " + currentround + " / " + rounds + "\n" + "Your move (Rock, Paper, Scissors)");
+    Pchoice = prompt("Round " + currentRound + " / " + rounds + "\n" + "Your move (Rock, Paper, Scissors)");
     Pchoice = Pchoice.toLowerCase();
     Tchoice = Pchoice.substr(0,1);
     Tchoice = Tchoice.toUpperCase();
@@ -41,19 +41,19 @@ function getPlayerChoice() {
 
 function playRound() {
     rounds = parseInt(prompt("Number of rounds to play?"));
-    currentround = 1;
-    while (currentround <= rounds) {
-        computerSelection = getcomputerchoice();
+    currentRound = 1;
+    while (currentRound <= rounds) {
+        computerSelection = getComputerChoice();
         playerSelection = getPlayerChoice();
         result = getResult(computerSelection, playerSelection, wins, ties);
         console.log ("Computer's play: " + computerSelection);
         console.log ("Your play: " + playerSelection);
         console.log ("Result: " + result);
-        console.log ("Wins: " + wins + " / Losses: " + ((currentround - ties) - wins + " ties: " + ties));
-        console.log ("Win percentage: " + ((wins / currentround) * 100) + "%");
+        console.log ("Wins: " + wins + " / Losses: " + ((currentRound - ties) - wins + " ties: " + ties));
+        console.log ("Win percentage: " + ((wins / currentRound) * 100) + "%");
 
 
-        currentround++;
+        currentRound++;
     }
 }
 
@@ -113,4 +113,4 @@ function getResult() {
     }
 }
 
-playRound()
+// playRound()

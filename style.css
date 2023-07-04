@@ -1,0 +1,206 @@
+/* Stylesheet for Q-Mini-War */
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    max-width: 1020px;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: linear-gradient(132deg, #B3B7C0, #AAB1BB);
+    min-height: 150px;
+    padding: 5px;
+    
+}
+.logo {
+    flex: 1, 1, 20%;
+}
+
+.logo img {
+    height:150px;
+    
+}
+
+.title {
+    
+    min-width: 85%;
+    
+}
+
+.title img {
+    height: 120px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+#scoreCard {
+    background-color: midnightblue;
+    color:oldlace;
+    align-self: center;
+    height: 80px;
+    width: 1020px;
+}
+
+#scoreCard h1 {
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+    align-self: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1;
+
+}
+
+#scoreDisplay {
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    flex: 1, 1, auto;
+    /* gap: 25px; */
+    margin-top: 0;
+    line-height: .05rem;
+    
+}
+
+#inputArea {
+    max-width: 1020px;
+    background-image: url("./images/Qbkg.png");
+    background-repeat: no-repeat;
+    background-size: 1020px;
+}
+
+#inputArea section {
+    background-color:rgba(253, 245, 230, .5);
+    height:500px;
+    width: 960px;
+    border: 2px outset darkslateblue;
+    box-shadow: 5px 5px 8px rgb(18, 19, 19);
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 22px;
+}
+
+#choiceInstructions, #startupTitle, #resultTitle {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    color: maroon;
+}
+
+#playersChoices, #roundsSelect {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#playersChoices > div, #roundsSelect > div {
+    background-color: honeydew;
+    color:midnightblue;
+    text-align: center;
+    border: 1px solid midnightblue;
+    border-radius: 25px;
+    box-shadow: 4px 4px 8px black;
+    padding: 8px;
+    width: 150px;
+    line-height: .5rem;
+
+}
+
+#playersChoices img {
+    width: 100px;
+    margin: auto;
+}
+
+#wisely, #resultTaunt {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: maroon;
+    margin-top: 40px;
+}
+
+#qortalCard{
+    font-size: 24px;
+}
+
+#roundsSelect h1 {
+    font-family: fantasy;
+    font-size: 64px;
+    font-weight: 900;
+
+}
+
+#roundsSelect h3 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#resultImage {
+    text-align: center;
+}
+
+#resultImage > img {
+    height: 250px;
+    margin: auto;
+}
+
+.hide {
+    display: none;
+    
+}
+
+.show {
+    display: block;
+    max-width: 1020px;
+    height: 574px;
+    
+}
+
+footer {
+    background-color: midnightblue;
+    height: 100px;
+    color:oldlace;
+    text-align: center;
+    
+}
+footer #truk {
+    
+        /* font-size: 5em; */
+        /* font-fam: serif; */
+        color: transparent;
+        /* text-align: center; */
+        animation: effect 38s linear infinite;
+        
+    }
+
+    @keyframes effect {
+        0% {
+            background: linear-gradient(DarkViolet, #000FFF);
+            -webkit-background-clip: text;
+        }
+        25% {
+            background: linear-gradient(red, #000FFF);
+        -webkit-background-clip: text;  
+        }
+        50% {
+            background: linear-gradient( yellow , #000FFF);
+            -webkit-background-clip: text;
+        }
+        75% {
+            background: linear-gradient( #00FF00, #000FFF);
+            -webkit-background-clip: text;
+        }
+        100% {
+            background: linear-gradient( #3CE7D7, #000FFF);
+            -webkit-background-clip: text;
+        }
+    }

@@ -3,11 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
-
+    <title>Q - Mini War</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header id = "header" class = "header">
+        <div id = "logo" class = "logo">
+            <img src = "images/QMWlogo.png" alt = "Q-Mini-War Logo">
+        </div>
+        <div id = "title" class = "title">
+            <img src = "images/QMWheader.png" alt = "Q-Mini-War Title">
+        </div>
+    </header>
+
+    <section id = "scoreCard" class = "score">
+        <h1>****  SCOREBOARD  ****</h1>
+        <div id = "scoreDisplay">
+            <h3 id = "displayWins">Wins: 0</h3>
+            <h3 id = "displayLosses">Losses: 0</h3>
+            <h3 id = "displayTies">Ties: 0</h3>
+            <h3 id = "displayPercent">Win Percentage: 0%</h3>
+        </div>
+       
+    </section>
+
+    <section id = "inputArea" class = "show">
+
+        <section id = "results" class = "hide">
+
+        </section>
+
+        <section id = "finalResult" class = "show">
+            <div id = "resultTitle">
+                <h1>Come on, man! </h1>
+            </div>
+            <div id = "resultImage">
+                <img src="./images/BG-lose.png" alt="image showing results">
+            </div>
+            <div id = "resultTaunt">
+                <h3>Qortal's decentralized infrastructure will always win over Big Government!</h3>
+            </div>
+
     
+        </section>
+        <section id = "playersTurn" class = "hide">
+            <div id = "choiceInstructions">
+                <H1>Choose Your Weapon!</H1>
+            </div>
+            <div id = "playersChoices">
+                <div id = "bigGovernmentCard">
+                    <img src = "./images/BGJ.png" alt = "big government - joe biden">
+                    <h2 class = "big">Big</h2><h2>Government</h2>
+                </div>
+                <div id = "fiatCard">
+                    <img src = "./images/money-smile.png" alt = "smiling fiat money">
+                    <h2 class = "big">Fiat</h2><h2>Currencies</h2>
+                </div>
+                <div id = "bigTechCard">
+                    <img src = "./images/BTG.png" alt = "big tech - logo">
+                    <h2 class = "big">Big</h2><h2>Tech</h2>
+                </div>
+                <div id = "qortalCard">
+                    <img src = "./images/Qhex.png" alt = "Qortal Logo">
+                    <h1>Qortal</h1>
+                </div>
+            </div>
+            <div id = "wisely">
+                <h1>Choose Wisely!</h1>
+            </div>
+        </section>
+        <section id = "computersTurn" class = "hide">
+
+        </section>
+        <section id = "startup" class = "hide">
+            <div id = "startupTitle">
+                <h1>How many rounds would you like to play?</h1>
+            </div>
+            <div id = "roundsSelect">
+                <div id = "rounds5">
+                    <h1>5</h1>
+                    <h3>rounds</h3>
+                </div>
+                <div id = "rounds10">
+                    <h1>10</h1>
+                    <h3>rounds</h3>
+                </div>
+                <div id = "rounds25">
+                    <h1>25</h1>
+                    <h3>rounds</h3>
+                </div>
+                <div id = "rounds100">
+                    <h1>100</h1>
+                    <h3>rounds</h3>
+                </div>
+                
+            </div>
+            <div id = "wisely">
+                <h1>Come on, man - You know you wanna do the hundred!</h1>
+            </div>
+        </section>
+    </section>
+
+    <footer id = "footer" class = "footer">
+        <h2><span style = "text-decoration-line: line-through;"> &nbsp©&nbsp</span> &nbsp Copyright? We don't need no stinking copyright! Do what you want with it... I know I did.</h2>
+        <h3>Hand coded with a whole lotta cussin' and only one smashed keyboard by <span id = "truk">Trukin8r</span></h3>
+    </footer>
     <script src="./script.js"></script>
 </body>
 </html>
