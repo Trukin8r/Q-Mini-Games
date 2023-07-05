@@ -89,20 +89,45 @@ body {
     margin-top: 22px;
 }
 
-#choiceInstructions, #startupTitle, #resultTitle {
+#finalResult {
+    max-width: 1020px;
+    background-image: url("./images/Qwin.png");
+    background-repeat: no-repeat;
+    background-size: 1020px;
+}
+
+#finalScore {
+    text-align: center;
+    color:oldlace;
+    text-shadow: 2px 2px black;
+    font-size: 28px;
+    font-weight: 900;
+
+}
+
+#finalScore #finalWins {
+    /* color:green; */
+}
+
+#choiceInstructions,
+ #startupTitle,
+  #resultTitle,
+   #finalResultTitle {
     text-align: center;
     font-size: 36px;
     font-weight: 900;
     color: maroon;
 }
 
-#playersChoices, #roundsSelect {
+#playersChoices,
+ #roundsSelect {
     display: flex;
     justify-content: space-around;
 
 }
 
-#playersChoices > div, #roundsSelect > div {
+#playersChoices > div,
+ #roundsSelect > div {
     background-color: honeydew;
     color:midnightblue;
     text-align: center;
@@ -120,12 +145,20 @@ body {
     margin: auto;
 }
 
-#wisely, #resultTaunt {
+#wisely,
+ #resultTaunt,
+  #finalResultTaunt {
     text-align: center;
     font-size: 24px;
     font-weight: 900;
     color: maroon;
     margin-top: 40px;
+    
+}
+
+#finalResultTaunt {
+    text-align: left;
+    margin-left: 18px;
 }
 
 #qortalCard{
@@ -148,7 +181,7 @@ body {
     text-align: center;
 }
 
-#resultImage > img {
+#resultImage > img, {
     height: 250px;
     margin: auto;
 }
