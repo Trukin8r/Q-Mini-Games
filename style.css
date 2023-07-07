@@ -106,13 +106,23 @@ body {
 }
 
 #finalScore #finalWins {
-    /* color:green; */
+    color:green;
 }
+
+#finalScore #finalLosses {
+    color: red;
+}
+
+#finalScore #finalTies {
+    color: yellow;
+}
+
 
 #choiceInstructions,
  #startupTitle,
   #resultTitle,
-   #finalResultTitle {
+   #finalResultTitle,
+   #computersTurnTitle {
     text-align: center;
     font-size: 36px;
     font-weight: 900;
@@ -120,14 +130,18 @@ body {
 }
 
 #playersChoices,
- #roundsSelect {
+ #roundsSelect,
+ #computerChoices,
+ #resultCards {
     display: flex;
     justify-content: space-around;
 
 }
 
 #playersChoices > div,
- #roundsSelect > div {
+ #roundsSelect > div,
+ #computerChoices > div,
+ #resultCards > div {
     background-color: honeydew;
     color:midnightblue;
     text-align: center;
@@ -140,7 +154,28 @@ body {
 
 }
 
-#playersChoices img {
+#roundsSelect > div:hover,
+#playersChoices > div:hover {
+    color:red;
+    /* width: 160px; */
+    background-color: lightcyan;
+    cursor: pointer;
+    text-shadow: 4 4 8px magenta;
+}
+
+/* #roundsSelect > div:hover > h1 {
+    font-size: 70px;
+}
+
+#roundsSelect > div:hover > h3 {
+    font-size: 32 px;
+    font-weight: 900;
+} */
+
+
+#playersChoices img,
+#computerChoices img,
+#resultCards img {
     width: 100px;
     margin: auto;
 }
@@ -181,9 +216,28 @@ body {
     text-align: center;
 }
 
-#resultImage > img, {
+#resultImage > img {
     height: 250px;
     margin: auto;
+}
+
+#continueButton,
+#restartButton {
+    color: black;
+    background-color: lightgray;
+    border: 2px solid darkgrey;
+    border-radius: 10px;
+    width: 100px;
+    text-align: center;
+    margin: auto auto;
+}
+
+#continueButton:hover,
+#restartButton:hover {
+    color: white;
+    background-color: darkgreen;
+    border: 2px solid green;
+    cursor: pointer;
 }
 
 .hide {

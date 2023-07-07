@@ -31,13 +31,27 @@
 
         <section id = "results" class = "hide">
             <div id = "resultTitle">
-                <h1>Come on, man! </h1>
+                <h1 id = "rTitle">Come on, man! </h1>
             </div>
-            <div id = "resultImage">
-                <img src="./images/BG-lose.png" alt="image showing results">
+            <div id = "resultCards">
+                <div id = "playersResultCard">
+                    <h2>Your Choice</h2>
+                    <img id = "pResultImage" src = "./images/BGJC.png" alt = "players choice image">
+                    <h3 id = "pChoice">Big Government</h3>
+                </div>
+                    
+                <div id = "ComputersResultCard">
+                    <h3>Computers Choice</h3>
+                    <img id = "cResultImage" src = "./images/BGJC.png" alt = "computers choice image">
+                    <h3 id = "cChoice">Big Government</h3>
+                </div>
+                <!-- <img src="./images/BG-lose.png" alt="image showing results"> -->
             </div>
             <div id = "resultTaunt">
-                <h3>Qortal's decentralized infrastructure will always win over Big Government!</h3>
+                <h3 id = "rTaunt">Qortal's decentralized infrastructure will always win over Big Government!</h3>
+            </div>
+            <div id = "continueButton" onmousedown="CBclick()">
+            <h1>Continue</h1>
             </div>
         </section>
 
@@ -47,20 +61,20 @@
                 <H1>Choose Your Weapon!</H1>
             </div>
             <div id = "playersChoices">
-                <div id = "bigGovernmentCard">
-                    <img src = "./images/BGJ.png" alt = "big government - joe biden">
+                <div id = "bigGovernmentCard" onmouseover = "BGalt()" onmouseout = "BGreg()" onmousedown = "BGselect()">
+                    <img id = "BGimg" src = "./images/BGJ.png" alt = "big government - joe biden">
                     <h2 class = "big">Big</h2><h2>Government</h2>
                 </div>
-                <div id = "fiatCard">
-                    <img src = "./images/money-smile.png" alt = "smiling fiat money">
+                <div id = "fiatCard" onmouseover = "FCalt()" onmouseout = "FCreg()" onmousedown = "FCselect()">
+                    <img id = "FCimg" src = "./images/money-smile.png" alt = "smiling fiat money">
                     <h2 class = "big">Fiat</h2><h2>Currencies</h2>
                 </div>
-                <div id = "bigTechCard">
-                    <img src = "./images/BTG.png" alt = "big tech - logo">
+                <div id = "bigTechCard" onmouseover = "BTalt()" onmouseout = "BTreg()" onmousedown = "BTselect()">
+                    <img id = "BTimg" src = "./images/BTG.png" alt = "big tech - logo">
                     <h2 class = "big">Big</h2><h2>Tech</h2>
                 </div>
-                <div id = "qortalCard">
-                    <img src = "./images/Qhex.png" alt = "Qortal Logo">
+                <div id = "qortalCard" onmouseover = "QCalt()" onmouseout = "QCreg()" onmousedown="Qselect()">
+                    <img id = "QCimg" src = "./images/Qhex.png" alt = "Qortal Logo">
                     <h1>Qortal</h1>
                 </div>
             </div>
@@ -70,39 +84,47 @@
         </section>
 
         <section id = "computersTurn" class = "hide">
-
+            <div id = "computersTurnTitle">
+                <h1>SSSHHHHH!!!! The Computer Is Thinking</h1>
+            </div>
+            <div id = "computerChoices">
+                <div id = "ccCard">
+                    <img id = "ccImg" src="./images/BGJ.png" alt="computers choices">
+                    <h3 id ="ccText">Big Government</h3>
+                </div>
+            </div>
         </section>
         <section id = "startup" class = "show">
             <div id = "startupTitle">
                 <h1>How many rounds would you like to play?</h1>
             </div>
             <div id = "roundsSelect">
-                <div id = "rounds5">
+                <div id = "rounds5" class = "roundsClick">
                     <h1>5</h1>
                     <h3>rounds</h3>
                 </div>
-                <div id = "rounds10">
+                <div id = "rounds10" class = "roundsClick">
                     <h1>10</h1>
                     <h3>rounds</h3>
                 </div>
-                <div id = "rounds25">
+                <div id = "rounds25" class = "roundsClick">
                     <h1>25</h1>
                     <h3>rounds</h3>
                 </div>
-                <div id = "rounds100">
+                <div id = "rounds100" class = "roundsClick">
                     <h1>100</h1>
                     <h3>rounds</h3>
                 </div>
                 
             </div>
             <div id = "wisely">
-                <h1>Come on, man - You know you wanna do the hundred!</h1>
+                <h1>You know you wanna do the hundred!</h1>
             </div>
         </section>
     </section>
     <section id = "finalResult" class = "hide">
         <div id = "finalResultTitle">
-            <h1>Did You Win?!?!?! </h1>
+            <h1 id = "finalTitle">Did You Win?!?!?! </h1>
         </div>
         <div id = "finalScore">
             <h3 id = "finalWins">Wins: 0</h3>
@@ -114,6 +136,8 @@
         <div id = "finalResultTaunt">
             <h3>Hint: Qortal <span style = "text-decoration-line: underline;">Always</span> Wins!</h3>
         </div>
+        <div id = "restartButton" onmousedown="restart()">
+            <h1>Play Again?</h1>
     
 
     </section>
