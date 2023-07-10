@@ -1,11 +1,17 @@
 /* Stylesheet for Q-Mini-War */
 
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     
     max-width: 1020px;
+    margin: auto;
+    border: 2px solid midnightblue;
+    border-radius: 21px;
+    box-shadow: 5px 5px 10px powderblue;
+    
 }
 
 .header {
@@ -15,6 +21,7 @@ body {
     background-image: linear-gradient(132deg, #B3B7C0, #AAB1BB);
     min-height: 150px;
     padding: 5px;
+    border-radius: 18px 18px 0px 0px;
     
 }
 .logo {
@@ -157,21 +164,10 @@ body {
 #roundsSelect > div:hover,
 #playersChoices > div:hover {
     color:red;
-    /* width: 160px; */
     background-color: lightcyan;
     cursor: pointer;
     text-shadow: 4 4 8px magenta;
 }
-
-/* #roundsSelect > div:hover > h1 {
-    font-size: 70px;
-}
-
-#roundsSelect > div:hover > h3 {
-    font-size: 32 px;
-    font-weight: 900;
-} */
-
 
 #playersChoices img,
 #computerChoices img,
@@ -231,6 +227,9 @@ body {
     text-align: center;
     margin: auto auto;
 }
+#restartButton {
+    width: 125px;
+}
 
 #continueButton:hover,
 #restartButton:hover {
@@ -257,14 +256,11 @@ footer {
     height: 100px;
     color:oldlace;
     text-align: center;
+    border-radius: 0px 0px 18px 18px;
     
 }
 footer #truk {
-    
-        /* font-size: 5em; */
-        /* font-fam: serif; */
         color: transparent;
-        /* text-align: center; */
         animation: effect 38s linear infinite;
         
     }
