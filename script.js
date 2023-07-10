@@ -44,6 +44,7 @@ roundsClicked.addEventListener("click", function(e){
     if (rounds > 0){
         document.getElementById('startup').className = "hide";
         document.getElementById('playersTurn').className = "show";
+        updateRounds();
     }
 });
 
@@ -422,15 +423,19 @@ function getResult() {
     }
 }
 function postResult() {
-    const m = (currentRound - ties) - wins;
-    let p = ((wins / currentRound) * 100);
-    p = p.toFixed(0)
+    
     document.getElementById("pResultImage").src = playResultImg;
     document.getElementById("cResultImage").src = compResultImg;
     document.getElementById("pChoice").innerHTML = playerSelection;
     document.getElementById("cChoice").innerHTML = computerSelection;
     document.getElementById("rTitle").innerHTML = resultTtl;
     document.getElementById("rTaunt").innerHTML = taunt;
+    updateScoreboard();
+}
+function updateScoreboard() {
+    const m = (currentRound - ties) - wins;
+    let p = ((wins / currentRound) * 100);
+    p = p.toFixed(0)
     document.getElementById("displayWins").innerHTML = "Wins: " + wins;
     if (currentRound == ties || currentRound == wins){
         document.getElementById("displayLosses").innerHTML = "Losses: 0";
@@ -464,13 +469,16 @@ function postResult() {
         document.getElementById("playersResultCard").style.backgroundColor = "Khaki";
         document.getElementById("ComputersResultCard").style.backgroundColor = "Khaki";
     }
-    
+}
+function updateRounds() {
+    document.getElementById("displayRounds").innerHTML = "Round: " + currentRound + " / " + rounds;
 }
 function CBclick(){
     if(currentRound == rounds) {
         postFinalResults();
     } else {
         ++currentRound
+        updateRounds()
         document.getElementById("displayWins").style.color = "";
         document.getElementById("displayTies").style.color = "";
         document.getElementById("displayLosses").style.color = "";
@@ -533,10 +541,10 @@ function restart() {
     document.getElementById("displayLosses").innerHTML = "Losses: 0";
     document.getElementById("displayTies").innerHTML = "Ties: 0";
     document.getElementById("displayPercent").innerHTML = "Win Percentage: 0%";
+    document.getElementById("displayRounds").innerHTML = "Round: 0 / 0"
     wins = 0
     ties = 0
     currentRound = 0
     rounds = 0
 
 }
-// playRound()
