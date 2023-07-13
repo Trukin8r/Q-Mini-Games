@@ -1,0 +1,65 @@
+/* Styles for Q-Mini_Games Main Menu */
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    max-width: 1020px;
+    margin: auto;
+    border: 2px solid midnightblue;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px powderblue;
+    margin-top: 8px;
+    gap: 5px;
+    
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: linear-gradient(132deg, #B3B7C0, #AAB1BB);
+    min-height: 150px;
+    /* padding: 5px; */
+    border-radius: 18px 18px 0px 0px;
+    
+}
+
+main {
+    border-radius: 25px;
+    max-width: 1020px;
+    background-image: url("./images/free-casino-table-cloth-texture-1637741.jpg");
+    background-repeat: no-repeat;
+    background-size: 1020px;
+    min-height: 500px;
+}
+
+#gamesGrid1 {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+
+}
+
+.gameCard {
+    text-align: center;
+    background-color: bisque;
+    max-width: 125px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px black;
+
+}
+
+.gameCard > h3 {
+    margin: 0;
+}
+
+.gameCard > h4 {
+    margin: 2px;
+}
+
+.gameCard > img {
+    width: 100px;
+       
+}
