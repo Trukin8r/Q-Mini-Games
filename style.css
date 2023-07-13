@@ -12,6 +12,7 @@ body {
     /* box-shadow: 5px 5px 10px powderblue; */
     margin-top: 8px;
     gap: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -27,7 +28,7 @@ header {
 
 #banner {
     background-color: midnightblue;
-    color: #B3B7C0;
+    color: lightslategray;
     border-radius: 25px;
     text-align: center;
     font-size: 36px;
@@ -72,6 +73,7 @@ main {
 
 .gameCard > h3 {
     margin: .5;
+    font-weight: 900;
 }
 
 .gameCard > h4 {
@@ -85,7 +87,7 @@ main {
 
 footer {
     background-color: midnightblue;
-    color: #B3B7C0;
+    color: lightslategray;
     border-radius: 25px;
 
 
