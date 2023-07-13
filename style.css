@@ -7,23 +7,36 @@ body {
     
     max-width: 1020px;
     margin: auto;
-    border: 2px solid midnightblue;
+    /* border: 2px solid midnightblue; */
     border-radius: 25px;
-    box-shadow: 5px 5px 10px powderblue;
+    /* box-shadow: 5px 5px 10px powderblue; */
     margin-top: 8px;
     gap: 5px;
-    
 }
 
 header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    background-image: linear-gradient(132deg, #B3B7C0, #AAB1BB);
+    /* background-image: linear-gradient(132deg, #B3B7C0, #AAB1BB); */
     min-height: 150px;
     /* padding: 5px; */
     border-radius: 18px 18px 0px 0px;
     
+}
+
+#banner {
+    background-color: midnightblue;
+    color: #B3B7C0;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    
+}
+
+#banner > h1 {
+    margin: 0;
 }
 
 main {
@@ -33,26 +46,32 @@ main {
     background-repeat: no-repeat;
     background-size: 1020px;
     min-height: 500px;
+    color: #B3B7C0;
+    text-align: center;
 }
 
 #gamesGrid1 {
     display: flex;
     justify-content: space-around;
     gap: 10px;
+    margin-top: 10px;
+    
 
 }
 
 .gameCard {
     text-align: center;
-    background-color: bisque;
-    max-width: 125px;
+    background-color: lightblue;
+    max-width: 175px;
+    border: 3px solid midnightblue;
     border-radius: 15px;
-    box-shadow: 5px 5px 10px black;
-
+    box-shadow: 3px 3px 3px black;
+    color: midnightblue;
+    cursor: pointer;
 }
 
 .gameCard > h3 {
-    margin: 0;
+    margin: .5;
 }
 
 .gameCard > h4 {
@@ -60,6 +79,20 @@ main {
 }
 
 .gameCard > img {
-    width: 100px;
+    width: 150px;
        
+}
+
+footer {
+    background-color: midnightblue;
+    color: #B3B7C0;
+    border-radius: 25px;
+
+
+}
+
+#qmgLicense > img {
+    height: 20px;
+    float: left;
+    margin: 5px;
 }

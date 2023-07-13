@@ -11,22 +11,44 @@
         <img id = "headerBanner" src="./images/QMGBanner(1020x150)Rounded-Corners.png" alt="Q Mini Games Banner">
     </header>
     <section id = "banner">
-        
+        <h1> Choose Your Game</h1>
     </section>
     <main>
-        <h1> Choose Your Game</h1>
+        
         <div id = "gamesGrid1" class="show">
-            <div id = "qmw" class = "gameCard">
+            <div id = "qmw" class = "gameCard" onmouseover="cardAlt('qmw')" onmouseout="cardReg('qmw')" onmousedown="window.location='./games/q-mini-war/index.html'">
                 <h3 id="qmwTitle" class="gameTitle">Q-Mini-War</h3>
-                <img src="./images/QMWlogo.png" alt="Q Mini War logo">
+                <img id="qmwImg" src="./images/QMWlogo.png" alt="Q Mini War logo">
                 <h4 id="qmwDesc" class="gameDesc">A Qortian perspective on the classic Rock, Paper, Scissors</h4>
             </div>
+            <div id = "qmn" class = "gameCard" onmouseover="cardAlt('qmn')" onmouseout="cardReg('qmn')" onmousedown="window.location='./games/q-man/index.html'">
+                <h3 id="qmnTitle" class="gameTitle">Q-Man</h3>
+                <img id="qmnImg" src="./images/QMWlogo.png" alt="Q Man logo">
+                <h4 id="qmnDesc" class="gameDesc">A Hangman variant where you must save the Q-Man</h4>
+            </div>
+            <div id = "qms" class = "gameCard" onmouseover="cardAlt('qms')" onmouseout="cardReg('qms')" onmousedown="window.location='./games/q-solitaire/index.html'" hidden>
+                <h3 id="qmsTitle" class="gameTitle">Q-Mini-Solitaire</h3>
+                <img id="qmsImg" src="./images/QMWlogo.png" alt="Q Solitaire logo">
+                <h4 id="qmsDesc" class="gameDesc">Just a simple solitaire game</h4>
+            </div>
+            <div id = "qmm" class = "gameCard" onmouseover="cardAlt('qmm')" onmouseout="cardReg('qmm')" onmousedown="window.location='./games/q-mini-mines/index.html'" hidden>
+                <h3 id="qmmTitle" class="gameTitle">Q-Mini-Mines</h3>
+                <img id="qmmImg" src="./images/QMWlogo.png" alt="Q Mini Mines logo">
+                <h4 id="qmmDesc" class="gameDesc">Find all the mines without blowing yourself up</h4>
+            </div>
+            <div id = "qmore" class = "gameCard" onmouseover="cardAlt('qmore')" onmouseout="cardReg('qmore')">
+                <h3 id="qmoreTitle" class="gameTitle">More Games</h3>
+                <img id="qmoreImg" src="./images/QMG-Logo(320x320)-Transparent.png" alt="Q Mini Games logo">
+                <h4 id="qmoreDesc" class="gameDesc">More great mini games will be coming soon</h4>
+            </div>
         </div> 
-<a href = "./games/q-mini-war/index.html" style = "text-align: center;">** Click Here **</a>
+        
     </main>
     <footer>
-
+        <div id="qmgLicense">
+            <img src="./images/copyright-free.png" alt="Copyright free image">  <H4>Q-Mini-Games is offered to you without license, without warrantee, and without any other promises. Donations and attributions are always apprecieciated.</H4>
+        </div>
     </footer>
-    
+    <script src="./script.js"></script>
 </body>
 </html>
