@@ -65,10 +65,9 @@ main {
     cursor: pointer;
 }
 
-#gameCard {
-    /* display: flex;
-    justify-content: flex-end; */
-}
+/* #gameCard {
+    
+} */
 #gameArea {
     height: 150px;
     width: 500;

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q-Man</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="/Q-Mini-Games/favicon.ico">
 </head>
 <body>
     <header>
@@ -12,57 +13,61 @@
     </header>
     <nav id = navBar>
         <div id="infoButton">
-            <img class="navButton" src="./images/Help2Button.png" alt="Info Button">
+            <img class="navButton" src="./images/Help2Button.png" alt="Info Button" onmousedown="infoButton()">
+        </div>
+        <div id="muteButton">
+            <img id = "muteImg" class="navButton" src="./images/AudioButton.png" alt="Mute Button" onmousedown="muteButton()">
         </div>
         <div id="cancelButton">
-            <img class="navButton" src="./images/XButton.png" alt="Cancel Button">
+            <img class="navButton" src="./images/XButton.png" alt="Cancel Button" onmousedown="cancelButton()">
         </div>
         <div id="RestartButton">
-            <img class="navButton" src="./images/RestartButton.png" alt="Restart Button">
+            <img class="navButton" src="./images/RestartButton.png" alt="Restart Button" onmousedown="restartButton()">
         </div>
         <div id="settingsButton">
-            <img class="navButton" src="./images/SettingsButton.png" alt="Settings Button">
+            <img class="navButton" src="./images/SettingsButton.png" alt="Settings Button" onmousedown="settingsButton()">
         </div>
         <div id="snowflakeButton">
-            <img class="navButton" src="./images/SnowflakeButton.png" alt="Snowflake Button">
+            <img class="navButton" src="./images/SnowflakeButton.png" alt="Snowflake Button" onmousedown="snowflakeButton()">
         </div>
     </nav>
     <main id="gameBoard">
-        <div id="letterA" class="letterCard">A</div>
-        <div id="letterB" class="letterCard">B</div>
-        <div id="letterC" class="letterCard">C</div>
-        <div id="letterD" class="letterCard">D</div>
-        <div id="letterE" class="letterCard">E</div>
-        <div id="letterF" class="letterCard">F</div>
-        <div id="letterG" class="letterCard">G</div>
-        <div id="letterH" class="letterCard">H</div>
-        <div id="letterI" class="letterCard">I</div>
-        <div id="letterJ" class="letterCard">J</div>
-        <div id="letterK" class="letterCard">K</div>
-        <div id="letterL" class="letterCard">L</div>
-        <div id="letterM" class="letterCard">M</div>
-        <div id="letterN" class="letterCard">N</div>
-        <div id="letterO" class="letterCard">O</div>
-        <div id="letterP" class="letterCard">P</div>
-        <div id="letterQ" class="letterCard">Q</div>
-        <div id="letterR" class="letterCard">R</div>
-        <div id="letterS" class="letterCard">S</div>
-        <div id="letterT" class="letterCard">T</div>
-        <div id="letterU" class="letterCard">U</div>
-        <div id="letterV" class="letterCard">V</div>
-        <div id="letterW" class="letterCard">W</div>
-        <div id="letterX" class="letterCard">X</div>
-        <div id="letterY" class="letterCard">Y</div>
-        <div id="letterZ" class="letterCard">Z</div>
+        <div id="letterA" class="letterCard" onmousedown="letterClick('A')">A</div>
+        <div id="letterB" class="letterCard" onmousedown="letterClick('B')">B</div>
+        <div id="letterC" class="letterCard" onmousedown="letterClick('C')">C</div>
+        <div id="letterD" class="letterCard" onmousedown="letterClick('D')">D</div>
+        <div id="letterE" class="letterCard" onmousedown="letterClick('E')">E</div>
+        <div id="letterF" class="letterCard" onmousedown="letterClick('F')">F</div>
+        <div id="letterG" class="letterCard" onmousedown="letterClick('G')">G</div>
+        <div id="letterH" class="letterCard" onmousedown="letterClick('H')">H</div>
+        <div id="letterI" class="letterCard" onmousedown="letterClick('I')">I</div>
+        <div id="letterJ" class="letterCard" onmousedown="letterClick('J')">J</div>
+        <div id="letterK" class="letterCard" onmousedown="letterClick('K')">K</div>
+        <div id="letterL" class="letterCard" onmousedown="letterClick('L')">L</div>
+        <div id="letterM" class="letterCard" onmousedown="letterClick('M')">M</div>
+        <div id="letterN" class="letterCard" onmousedown="letterClick('N')">N</div>
+        <div id="letterO" class="letterCard" onmousedown="letterClick('O')">O</div>
+        <div id="letterP" class="letterCard" onmousedown="letterClick('P')">P</div>
+        <div id="letterQ" class="letterCard" onmousedown="letterClick('Q')">Q</div>
+        <div id="letterR" class="letterCard" onmousedown="letterClick('R')">R</div>
+        <div id="letterS" class="letterCard" onmousedown="letterClick('S')">S</div>
+        <div id="letterT" class="letterCard" onmousedown="letterClick('T')">T</div>
+        <div id="letterU" class="letterCard" onmousedown="letterClick('U')">U</div>
+        <div id="letterV" class="letterCard" onmousedown="letterClick('V')">V</div>
+        <div id="letterW" class="letterCard" onmousedown="letterClick('W')">W</div>
+        <div id="letterX" class="letterCard" onmousedown="letterClick('X')">X</div>
+        <div id="letterY" class="letterCard" onmousedown="letterClick('Y')">Y</div>
+        <div id="letterZ" class="letterCard" onmousedown="letterClick('Z')">Z</div>
         
     </main>
     <div id="gameCard">
     <section id="gameArea">
+        <div id="letter1" class="letterBlank">Q</div>
+        <div id="letter1" class="letterBlank">O</div>
+        <div id="letter1" class="letterBlank">R</div>
+        <div id="letter1" class="letterBlank">T</div>
         <div id="letter1" class="letterBlank">A</div>
-        <div id="letter1" class="letterBlank">&nbsp</div>
-        <div id="letter1" class="letterBlank">I</div>
-        <div id="letter1" class="letterBlank">A</div>
-        <div id="letter1" class="letterBlank">A</div>
+        <div id="letter1" class="letterBlank">L</div>
     </section>
     </div>
     <footer>
