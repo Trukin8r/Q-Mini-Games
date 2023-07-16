@@ -1,7 +1,22 @@
 let mute = false;
 let target;
+let keyP = "";
+let wordFile = "./easywords.csv"
+let regLet = /[a-zA-Z]/
 
-
+document.addEventListener('keydown', keyPress)
+// document.addEventListener('keyup', keyPress(keyP))
+function keyPress(k, regex) {
+    // let targetK = k.currentTarget;
+    let char = k.key;
+    console.log(char.length)
+    if(char.length == 1) {
+        if(regLet.test(char)) {
+            char = char.toUpperCase()
+            letterClick(char)
+        }
+    }
+}
 function infoButton() {
     
 }
@@ -12,6 +27,7 @@ function muteButton() {
     } else {
         mute = false;
         document.getElementById('muteImg').src = './images/AudioButton.png';
+        new Audio('./sounds/interface-button.mp3').play();
     }
 }
 function cancelButton() {
@@ -29,12 +45,20 @@ function settingsButton() {
 
 }
 function snowflakeButton() {
-    
+
 }
 
 function letterClick(l) {
-    if(mute == false){ new Audio('./sounds/rclick-13693.mp3').play()}
-    console.log(l);
+    const input = document.getElementById('letter' + l)
+    if(input.className == 'letterCard'){
+        if(mute == false) {
+            new Audio('./sounds/interface-button.mp3').play()
+        }
+        input.className = 'usedLetterCard'
+        letterSolver(l)
+
+        console.log(l);
+    }
 }
 
 

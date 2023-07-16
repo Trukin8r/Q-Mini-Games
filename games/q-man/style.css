@@ -26,6 +26,10 @@ nav {
     
 }
 
+.navCard {
+    width: 40px;
+}
+
 .navButton {
     height:35px;
 }
@@ -37,8 +41,11 @@ nav {
 main {
     background-color: lightblue;
     background-image: url("./images/Stage3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 25px;
-    height: 742px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -52,11 +59,25 @@ main {
     font-weight: 400;
     width: 32px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 50px;
     height: 40px;
     border: 1px solid black;
 
 
+}
+.usedLetterCard {
+    background-color: darkgray;border-radius: 10px;
+    font-size: 34px;
+    font-weight: 400;
+    width: 32px;
+    text-align: center;
+    margin-top: 50px;
+    height: 40px;
+    border: 1px solid black;
+
+}
+.usedLetterCard:hover {
+    cursor: not-allowed;
 }
 
 .letterCard:hover {
@@ -69,16 +90,16 @@ main {
     
 } */
 #gameArea {
-    height: 150px;
+    height: 100px;
     width: 500;
-    background-color: rgba(253, 246, 231, 0.6);
-    margin-top: -225px;
+    background-color: rgba(253, 246, 231, 0.8);
+    margin-top: -150px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 25px;
-    margin-left: 200px;
-    margin-right: 130px;
+    margin-left: 180px;
+    margin-right: 200px;
     border: 2px solid midnightblue;
     border-radius: 10px;
     padding-left: 30px;
