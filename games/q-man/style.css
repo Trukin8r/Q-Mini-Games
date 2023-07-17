@@ -91,15 +91,15 @@ main {
 } */
 #gameArea {
     height: 100px;
-    width: 500;
+    width: 700;
     background-color: rgba(253, 246, 231, 0.8);
     margin-top: -150px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 25px;
-    margin-left: 180px;
-    margin-right: 200px;
+    margin-left: 80px;
+    margin-right: 100px;
     border: 2px solid midnightblue;
     border-radius: 10px;
     padding-left: 30px;
