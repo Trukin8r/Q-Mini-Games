@@ -124,6 +124,37 @@ main {
     width:35px;
 }
 
+#instructions {
+    background-color: lightblue;
+    border: 2px solid midnightblue;
+    border-radius: 25px;
+    padding: 12px;
+    height: 571px;
+    margin-top: -609px;
+    margin-bottom: 5px;
+    display: none;
+}
+
+#instructions > h1 {
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 5px;
+}
+
+#instructions > p {
+    text-align: justify;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+#instructions > h4 {
+    line-height: 1rem;
+    margin-bottom: 1px;
+    margin-top: 3px;
+    font-weight: 900;
+}
+
 
 
 footer {

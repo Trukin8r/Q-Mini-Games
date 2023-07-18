@@ -9,6 +9,7 @@ let currentStage = 3;
 let gamesPlayed = 0;
 let gamesWon = 0;
 let gamesSolved = 0;
+let infoDisplayed = false;
 
 document.addEventListener('keydown', keyPress)
 function keyPress(k, regex) {
@@ -22,7 +23,16 @@ function keyPress(k, regex) {
     }
 }
 function infoButton() {
-    
+    const info = document.getElementById('instructions')
+    if (infoDisplayed == false) {
+        info.style.display = 'block';
+        infoDisplayed = true;
+        console.log(infoDisplayed)
+    } else {
+        info.style.display = 'none';
+        infoDisplayed = false;
+        console.log(infoDisplayed)
+    }
 }
 function muteButton() {
     if(mute == false) {
