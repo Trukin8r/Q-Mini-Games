@@ -58,6 +58,18 @@
         <div id="infoTip" class="toolTip">
             Game Instructions
         </div>
+        <div id="startBox" >
+            <div id="selectDiff">
+                <h1> Choose Difficulty</h1>
+                <input type="radio" id="easy" name="chooseDiff" value="easy" onchange="selectDiff('easy')">
+                <label for="easy">Easy</label>
+                <input type="radio" id="med" name="chooseDiff" value="med" checked onchange="selectDiff('med')">
+                <label for="easy">Medium</label>
+                <input type="radio" id="hard" name="chooseDiff" value="hard" onchange="selectDiff('hard')">
+                <label for="easy">Hard</label>
+            </div>
+            <h1 onmousedown="startGame()">Start Game</h1>
+        </div>
         <div id="letterA" class="letterCard" onmousedown="letterClick('A')">A</div>
         <div id="letterB" class="letterCard" onmousedown="letterClick('B')">B</div>
         <div id="letterC" class="letterCard" onmousedown="letterClick('C')">C</div>

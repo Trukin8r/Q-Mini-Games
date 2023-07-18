@@ -67,6 +67,45 @@ nav {
 #snowTip {
     margin-left: 265px;
 }
+#selectDiff {
+    background-color: lightgreen;
+    border: 2px solid midnightblue;
+    border-radius: 15px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    /* margin-left: ; */
+}
+#selectDiff > label {
+    font-size: 16;
+    font-weight: 700;
+}
+#selectDiff > h1 {
+    color: midnightblue;
+    margin-top:3px;
+    margin-bottom: 5px;
+}
+#startBox {
+    position: absolute;
+    margin-top: 225px;
+    margin-left: 325px;
+    width: 1020px;
+}
+#startBox >h1:hover {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+#startBox > h1 {
+    
+    font-size: 45px;
+    color: midnightblue;
+    background-color: lightcoral;
+    border: 3px solid midnightblue;
+    border-radius: 15px;
+    position: absolute;
+    width: 250px;
+    margin-left: 350px;
+}
 main {
     background-color: lightblue;
     background-image: url("./images/Stage3.png");

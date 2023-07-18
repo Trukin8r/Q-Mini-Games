@@ -10,6 +10,8 @@ let gamesPlayed = 0;
 let gamesWon = 0;
 let gamesSolved = 0;
 let infoDisplayed = false;
+let diff = 'medium';
+
 
 document.addEventListener('keydown', keyPress)
 function keyPress(k, regex) {
@@ -21,6 +23,11 @@ function keyPress(k, regex) {
             letterClick(char);
         }
     }
+}
+function startGame(){
+    const SB = document.getElementById('startBox');
+    SB.style.display = 'none'
+    getWord()
 }
 function showTP(toolTip){
     // const toolTip = document.getElementsByClassName('toolTip');
@@ -70,7 +77,9 @@ function settingsButton() {
 function snowflakeButton() {
     getWord()
 }
-
+function selectDiff(d){
+    diff = d
+}
 function letterClick(l) {
     const input = document.getElementById('letter' + l);
     if(input.className == 'letterCard'){
@@ -154,7 +163,19 @@ function restart(){
 }
 
 function getWord() {
-    secret = mWords[Math.floor((Math.random() * mWords.length) + 1)];
+    switch (diff) {
+    case 'easy':
+        secret = eWords[Math.floor((Math.random() * eWords.length) + 1)];
+        break;
+    case 'med':
+        secret = mWords[Math.floor((Math.random() * mWords.length) + 1)];
+        break;
+    case 'hard':
+        secret = hWords[Math.floor((Math.random() * hWords.length) + 1)];
+        break;
+    default:
+        secret = mWords[Math.floor((Math.random() * mWords.length) + 1)];
+    }
     console.log(secret);
     setWord(secret);
 }
