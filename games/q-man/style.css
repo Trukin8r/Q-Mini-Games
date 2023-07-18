@@ -37,7 +37,36 @@ nav {
 .navButton:hover {
     height:40px;
 }
-
+.toolTip {
+    position: absolute;
+    /* margin:5px; */
+    height:15;
+    border:2px solid midnightblue;
+    border-radius: 15px;
+    background-color: papayawhip;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px;
+    display:none;
+}
+#infoTip {
+    margin-right: 250px;
+}
+#muteTip {
+    margin-right: 185px;
+}
+#cancelTip {
+    width: 88px;
+}
+#restartTip {
+    margin-left: 85px;
+}
+#setTip {
+    margin-left: 165px;
+}
+#snowTip {
+    margin-left: 265px;
+}
 main {
     background-color: lightblue;
     background-image: url("./images/Stage3.png");

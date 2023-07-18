@@ -12,26 +12,52 @@
         <img src="./images/Q-ManBanner.png" alt="Q-Man Banner">
     </header>
     <nav id = navBar>
+        
         <div id="infoButton" class="navCard">
-            <img id="infoImg" class="navButton" src="./images/Help2Button.png" alt="Info Button" onmousedown="infoButton()">
+            <img id="infoImg" class="navButton" src="./images/Help2Button.png" alt="Info Button" onmouseover="showTP(document.getElementById('infoTip'))" onmouseout="hideTP(document.getElementById('infoTip'))" onmousedown="infoButton()">
+            
         </div>
+        
         <div id="muteButton" class="navCard">
-            <img id = "muteImg" class="navButton" src="./images/AudioButton.png" alt="Mute Button" onmousedown="muteButton()">
+            <img id = "muteImg" class="navButton" src="./images/AudioButton.png" alt="Mute Button" onmouseover="showTP(document.getElementById('muteTip'))" onmouseout="hideTP(document.getElementById('muteTip'))" onmousedown="muteButton()">
         </div>
+        
         <div id="cancelButton" class="navCard">
-            <img id="cancelImg" class="navButton" src="./images/XButton.png" alt="Cancel Button" onmousedown="cancelButton()">
+            <img id="cancelImg" class="navButton" src="./images/XButton.png" alt="Cancel Button" onmouseover="showTP(document.getElementById('cancelTip'))" onmouseout="hideTP(document.getElementById('cancelTip'))" onmousedown="cancelButton()">
         </div>
+        
         <div id="RestartButton" class="navCard">
-            <img id="restartImg" class="navButton" src="./images/RestartButton.png" alt="Restart Button" onmousedown="restartButton()">
+            <img id="restartImg" class="navButton" src="./images/RestartButton.png" alt="Restart Button" onmouseover="showTP(document.getElementById('restartTip'))" onmouseout="hideTP(document.getElementById('restartTip'))" onmousedown="restartButton()">
         </div>
+        
         <div id="settingsButton" class="navCard">
-            <img id="settingsImg" class="navButton" src="./images/SettingsButton.png" alt="Settings Button" onmousedown="settingsButton()">
+            <img id="settingsImg" class="navButton" src="./images/SettingsButton.png" alt="Settings Button" onmouseover="showTP(document.getElementById('setTip'))" onmouseout="hideTP(document.getElementById('setTip'))" onmousedown="settingsButton()">
         </div>
+        
         <div id="snowflakeButton" class="navCard">
-            <img id="snowflakeImg" class="navButton" src="./images/SnowflakeButton.png" alt="Snowflake Button" onmousedown="snowflakeButton()">
+            <img id="snowflakeImg" class="navButton" src="./images/SnowflakeButton.png" alt="Snowflake Button" onmouseover="showTP(document.getElementById('snowTip'))" onmouseout="hideTP(document.getElementById('snowTip'))" onmousedown="snowflakeButton()">
         </div>
+        
     </nav>
     <main id="gameBoard">
+        <div id="restartTip" class="toolTip">
+        Restart Game
+        </div>
+        <div id="snowTip" class="toolTip">
+            Snowflake
+        </div>
+        <div id="setTip" class="toolTip">
+            Game Settings
+        </div>
+        <div id="cancelTip" class="toolTip">
+            Quit Game
+        </div>
+        <div id="muteTip" class="toolTip">
+            Mute Sounds
+        </div>
+        <div id="infoTip" class="toolTip">
+            Game Instructions
+        </div>
         <div id="letterA" class="letterCard" onmousedown="letterClick('A')">A</div>
         <div id="letterB" class="letterCard" onmousedown="letterClick('B')">B</div>
         <div id="letterC" class="letterCard" onmousedown="letterClick('C')">C</div>

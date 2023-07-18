@@ -22,8 +22,17 @@ function keyPress(k, regex) {
         }
     }
 }
+function showTP(toolTip){
+    // const toolTip = document.getElementsByClassName('toolTip');
+    toolTip.style.display = 'block';
+}
+function hideTP(toolTip){
+    // const toolTip = document.getElementByClassName('toolTip');
+    toolTip.style.display = '';
+}
+
 function infoButton() {
-    const info = document.getElementById('instructions')
+    const info = document.getElementById('instructions');
     if (infoDisplayed == false) {
         info.style.display = 'block';
         infoDisplayed = true;
@@ -31,7 +40,7 @@ function infoButton() {
     } else {
         info.style.display = 'none';
         infoDisplayed = false;
-        console.log(infoDisplayed)
+        
     }
 }
 function muteButton() {
