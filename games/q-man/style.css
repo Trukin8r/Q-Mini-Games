@@ -114,6 +114,15 @@ main {
     padding: 5px;
     width:35px;
 }
+.letterSolved {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 4px solid darkgreen;
+    color: darkgreen;
+    padding: 5px;
+    width:35px;
+}
 
 
 

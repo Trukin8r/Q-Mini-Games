@@ -4,11 +4,14 @@ let keyP = "";
 let wordFile = "./easywords.csv";
 let regLet = /[a-zA-Z]/;
 let secret;
+let stage = 3;
+let currentStage = 3;
+let gamesPlayed = 0;
+let gamesWon = 0;
+let gamesSolved = 0;
 
 document.addEventListener('keydown', keyPress)
-// document.addEventListener('keyup', keyPress(keyP))
 function keyPress(k, regex) {
-    // let targetK = k.currentTarget;
     let char = k.key;
     console.log(char.length);
     if(char.length == 1) {
@@ -57,11 +60,74 @@ function letterClick(l) {
         }
         input.className = 'usedLetterCard';
         letterSolver(l);
-
-        console.log(l);
+        // stageUpdate();
+        // checkSolved();
+        // console.log('letter ' + l);
     }
 }
-
+function letterSolver(l) {
+    let letterCorrect = false
+    for(i=0; i < (secret.length); ++i){
+        console.log(secret.charAt(i))
+        if (l == secret.charAt(i)) {
+            if (document.getElementById('letter' + (i + 1)).className == 'letterBlank') {
+                document.getElementById('letter' + (i + 1)).innerHTML = l;
+                document.getElementById('letter' + (i + 1)).className = 'letterSolved';
+                letterCorrect = true
+            }
+        }
+    }
+    if (letterCorrect == true) {
+        document.getElementById('letter' + l).style.backgroundColor = 'Green';
+        stage++
+        new Audio('./sounds/rightanswer.mp3').play();
+        // setTimeout(stageUpdate, 2000);
+        stageUpdate()
+        // setTimeout(checkSolved, 2000);
+        checkSolved()
+    } else {
+        document.getElementById('letter' + l).style.backgroundColor = 'Red';
+        stage--
+        new Audio('./sounds/wahwahwah.mp3').play();
+        // setTimeout(stageUpdate, 2000);
+        stageUpdate()
+    }
+    
+}
+function checkSolved() {
+    solved: {
+        for(i = 1; i < (secret.length +1); i++) {
+            if (document.getElementById('letter' + i).className == 'letterBlank') { break solved; }
+        }
+        setTimeout(solved, 1500);
+    }
+}
+function solved() {
+    new Audio('./sounds/success-fanfare-trumpets.mp3').play();
+    alert('You Won')
+}
+function stageUpdate() {
+    if (stage > 7) {stage = 7}
+    if (stage != currentStage) {
+        // if (currentStage < stage) {
+        //         new Audio('./sounds/rightanswer.mp3').play();
+        //     } else {
+        //         new Audio('./sounds/wahwahwah.mp3').play();
+        //     }    
+    
+    if (currentStage < 7 && currentStage > 0){
+            document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage" + stage + ".png')"
+            currentStage = stage
+    }
+    if (stage == 0) { youLose()}
+            
+            
+        
+    }
+}
+function youLose(){
+    
+}
 
 
 function restart(){
@@ -80,14 +146,11 @@ function setWord(w) {
     while (gameArea.firstChild) {
         gameArea.removeChild(gameArea.firstChild)
     }
-    console.log(w.length)
     for(i=1; i < (w.length + 1); ++i){
         letterBlank.className = 'letterBlank';
         letterBlank.id = 'letter' + i;
         letterBlank.innerHTML = ' ';
         gameArea.appendChild(letterBlank.cloneNode(true));
-        console.log(letterBlank.id)
-        console.log(gameArea.childNodes)
     }
         
     }
