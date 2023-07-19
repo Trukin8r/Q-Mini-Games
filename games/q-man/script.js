@@ -10,6 +10,7 @@ let gamesPlayed = 0;
 let gamesWon = 0;
 let gamesSolved = 0;
 let infoDisplayed = false;
+let settingsDisplayed = false;
 let diff = 'medium';
 
 
@@ -72,13 +73,27 @@ function restartButton() {
     }
 }
 function settingsButton() {
-
+    let setDisp = document.getElementById('settingsCard');
+    if (document.getElementById('startBox').style.display == 'none'){
+        if (settingsDisplayed == true) {
+            setDisp.style.display = 'none';
+            settingsDisplayed = false;
+        } else {
+            setDisp.style.display = 'flex';
+            settingsDisplayed = true;
+        }
+    }
 }
 function snowflakeButton() {
-    getWord()
+    // Need to show completed word and a continue button
+    getWord() // Need to create and call a reset function
 }
 function selectDiff(d){
     diff = d
+    if (settingsDisplayed == true) {
+        document.getElementById('settingsCard').style.display = 'none';
+        settingsDisplayed = false;
+    }
 }
 function letterClick(l) {
     const input = document.getElementById('letter' + l);
@@ -116,7 +131,7 @@ function letterSolver(l) {
     } else {
         document.getElementById('letter' + l).style.backgroundColor = 'Red';
         stage--
-        new Audio('./sounds/wahwahwah.mp3').play();
+        new Audio('./sounds/wronganswer.mp3').play();
         // setTimeout(stageUpdate, 2000);
         stageUpdate()
     }

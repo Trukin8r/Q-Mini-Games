@@ -67,6 +67,53 @@ nav {
 #snowTip {
     margin-left: 265px;
 }
+#settingsCard{
+    background-color: oldlace;
+    color: midnightblue;
+    border: 2px solid midnightblue;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px midnightblue;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position:absolute;
+    text-align: center;
+    padding: 8px;
+    margin-left: 300px;
+    
+    
+}
+#settingsCard label {
+    font-size: 22px;
+    font-weight: 700;
+    
+}
+#settingsCard input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: lightgray;
+    border:  3px solid oldlace;
+    box-shadow: 0 0 0 1px black;
+}
+#settingsCard input:hover {
+    border-width: 0;
+}
+#settingsCard input:checked {
+    box-shadow: 0 0 0 1px midnightblue;
+    background-color: midnightblue;
+    border-width: .2rem;
+}
+#settingsCard p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #selectDiff {
     background-color: lightgreen;
     border: 2px solid midnightblue;

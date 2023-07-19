@@ -58,15 +58,31 @@
         <div id="infoTip" class="toolTip">
             Game Instructions
         </div>
+        <div id="settingsCard" class="settings">
+            <p>Set Difficulty</p>
+            <div>
+            <input type="radio" id="sEasy" name="setDiff" value="easy" onchange="selectDiff('easy')">
+            <label id="sEasyLab" for="sEasy">Easy</label>
+            </div>
+            <div>
+            <input type="radio" id="sMed" name="setDiff" value="med" checked onchange="selectDiff('med')">
+            <label id="sMedLab" for="sMed">Medium</label>
+            </div>
+            <div>
+            <input type="radio" id="sHard" name="setDiff" value="hard" onchange="selectDiff('hard')">
+            <label id="sHardLab" for="sHard">Hard</label>
+            </div>
+            <p>Changes will take effect <br/>on your next game.</p>
+        </div>
         <div id="startBox" >
             <div id="selectDiff">
                 <h1> Choose Difficulty</h1>
                 <input type="radio" id="easy" name="chooseDiff" value="easy" onchange="selectDiff('easy')">
                 <label for="easy">Easy</label>
                 <input type="radio" id="med" name="chooseDiff" value="med" checked onchange="selectDiff('med')">
-                <label for="easy">Medium</label>
+                <label for="med">Medium</label>
                 <input type="radio" id="hard" name="chooseDiff" value="hard" onchange="selectDiff('hard')">
-                <label for="easy">Hard</label>
+                <label for="hard">Hard</label>
             </div>
             <h1 onmousedown="startGame()">Start Game</h1>
         </div>
