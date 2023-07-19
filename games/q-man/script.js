@@ -85,8 +85,38 @@ function settingsButton() {
     }
 }
 function snowflakeButton() {
-    // Need to show completed word and a continue button
-    getWord() // Need to create and call a reset function
+    if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
+    setTimeout(snowFlake, 1000);
+}
+
+function snowFlake() {
+    // let lc = 65;
+    let l = "A"
+    if (document.getElementById('startBox').style.display == 'none' && settingsDisplayed == false) {  
+        if (confirm('Do you really want to lose your progress and restart Q-Man after revealing the current word?')) {
+        fillWord()
+        for(i = 65; i < 91; i++){
+            l = String.fromCharCode(i)
+            if (document.getElementById('letter' + l).className == "letterCard"){
+                document.getElementById('letter' + l).className = "usedLetterCard"
+            }
+
+        }
+        //getWord() // Need to create and call a reset function
+        }
+    }
+}
+function fillWord() {
+    let l = ""
+    for(i = 0; i < (secret.length); i++) {
+        l = secret.charAt(i)
+        
+        if (document.getElementById('letter' + (i + 1)).className == 'letterBlank') {
+            document.getElementById('letter' + (i + 1)).innerHTML = l; 
+            document.getElementById('letter' + (i + 1)).style.borderBottomColor = 'red';
+            document.getElementById('letter' + (i + 1)).style.color = 'red';
+        }
+    }
 }
 function selectDiff(d){
     diff = d
@@ -111,7 +141,7 @@ function letterClick(l) {
 function letterSolver(l) {
     let letterCorrect = false
     for(i=0; i < (secret.length); ++i){
-        console.log(secret.charAt(i))
+        // console.log(secret.charAt(i))
         if (l == secret.charAt(i)) {
             if (document.getElementById('letter' + (i + 1)).className == 'letterBlank') {
                 document.getElementById('letter' + (i + 1)).innerHTML = l;
