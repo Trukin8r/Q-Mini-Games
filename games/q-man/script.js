@@ -409,5 +409,5 @@ function setWord(w) {
         letterBlank.innerHTML = ' ';
         gameArea.appendChild(letterBlank.cloneNode(true));
     }
-        
+    resetLetters();   
     }

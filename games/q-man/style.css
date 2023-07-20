@@ -274,7 +274,7 @@ nav {
 }
 main {
     background-color: lightblue;
-    background-image: url("./images/Stage3.png");
+    background-image: url("./images/Stage7.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -381,6 +381,7 @@ main {
     margin-top: -609px;
     margin-bottom: 5px;
     display: none;
+    z-index: 15;
 }
 
 #instructions > h1 {
@@ -402,7 +403,26 @@ main {
     margin-top: 3px;
     font-weight: 900;
 }
-
+#infoExit {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+    top:-540px;
+    left:965px;
+    /* margin-top: -100; */
+    width: 14px;
+    border: 1px solid midnightblue;
+    border-radius: 5px;
+    padding: 5px;
+    color: midnightblue;
+    
+}
+#infoExit:hover {
+    cursor: pointer;
+    color:red;
+    border-color: red;
+}
 
 
 footer {
