@@ -113,6 +113,53 @@ nav {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#confirmBox {
+    display: none;
+    background-color: oldlace;
+    border: 2px solid midnightblue;
+    border-radius: 15px;
+    color: midnightblue;
+    text-align: center;
+    width: 600px;
+    position: absolute;
+    padding: 12px;
+    margin-top: 100px;
+    z-index: 10;
+}
+#confirmContainer {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+.confirmButtons {
+    border: 1px solid midnightblue;
+    border-radius: 15px;
+    color: midnightblue;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 700;
+}
+#confirmNo {
+    background-color: lightcoral;
+
+}
+#confirmNo:hover {
+    background-color: darkred;
+    color: oldlace;
+}
+#confirmYes {
+    background-color: lightgreen;
+}
+#confirmYes:hover {
+    background-color: darkgreen;
+    color: oldlace;
+}
+#confirmText {
+    text-align: justify;
+    font-size: 20px;
+    font-weight: 600;
+}
 #playAgain {
     position: absolute;
     background-color: oldlace;
