@@ -2,17 +2,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    
     max-width: 1020px;
     margin: auto;
-    /* border: 2px solid midnightblue; */
     border-radius: 25px;
-    /* box-shadow: 5px 5px 10px powderblue; */
     margin-top: 8px;
     gap: 5px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 nav {
     width: 1020px;
     height: 50px;
@@ -22,18 +18,13 @@ nav {
     align-items: center;
     background-color: midnightblue;
     border-radius: 25px;
-
-    
 }
-
 .navCard {
     width: 40px;
 }
-
 .navButton {
     height:35px;
 }
-
 .navButton:hover {
     height:40px;
 }
@@ -81,8 +72,6 @@ nav {
     text-align: center;
     padding: 8px;
     margin-left: 300px;
-    
-    
 }
 #settingsCard label {
     font-size: 22px;
@@ -142,7 +131,6 @@ nav {
 }
 #confirmNo {
     background-color: lightcoral;
-
 }
 #confirmNo:hover {
     background-color: darkred;
@@ -195,12 +183,10 @@ nav {
     display:flex;
     justify-content: space-around;
     margin-top: 3px;
-    
 }
 .statCard {
     text-align: center;
     color: midnightblue;
-
 }
 .statCardTitle,
 .statStat {
@@ -240,7 +226,6 @@ nav {
     padding: 10px;
     position: absolute;
     text-align: center;
-    /* margin-left: ; */
 }
 #selectDiff > label {
     font-size: 16;
@@ -262,7 +247,6 @@ nav {
     background-color: lightgreen;
 }
 #startBox > h1 {
-    
     font-size: 45px;
     color: midnightblue;
     background-color: lightcoral;
@@ -284,7 +268,6 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     gap: 4.5px;
-
 }
 .letterCard {
     background-color: oldlace;
@@ -296,8 +279,6 @@ main {
     margin-top: 50px;
     height: 40px;
     border: 1px solid black;
-
-
 }
 .usedLetterCard {
     background-color: darkgray;border-radius: 10px;
@@ -308,7 +289,6 @@ main {
     margin-top: 50px;
     height: 40px;
     border: 1px solid black;
-
 }
 .usedLetterCard:hover {
     cursor: not-allowed;
@@ -326,17 +306,11 @@ main {
 .killedLetterCard:hover{
     cursor: not-allowed;
 }
-
-
 .letterCard:hover {
     background-color: lightgreen;
     font-weight: 700;
     cursor: pointer;
 }
-
-/* #gameCard {
-    
-} */
 #gameArea {
     height: 100px;
     width: 700;
@@ -351,9 +325,7 @@ main {
     border: 2px solid midnightblue;
     border-radius: 10px;
     padding-left: 30px;
-    
 }
-
 .letterBlank {
     font-size: 40px;
     font-weight: 700;
@@ -371,7 +343,6 @@ main {
     padding: 5px;
     width:35px;
 }
-
 #instructions {
     background-color: lightblue;
     border: 2px solid midnightblue;
@@ -383,20 +354,17 @@ main {
     display: none;
     z-index: 15;
 }
-
 #instructions > h1 {
     text-align: center;
     margin-top: 7px;
     margin-bottom: 5px;
 }
-
 #instructions > p {
     text-align: justify;
     margin-top: 4px;
     margin-bottom: 8px;
     font-weight: 500;
 }
-
 #instructions > h4 {
     line-height: 1rem;
     margin-bottom: 1px;
@@ -416,15 +384,12 @@ main {
     border-radius: 5px;
     padding: 5px;
     color: midnightblue;
-    
 }
 #infoExit:hover {
     cursor: pointer;
     color:red;
     border-color: red;
 }
-
-
 footer {
     background-color: midnightblue;
     color: lightslategray;
@@ -432,7 +397,6 @@ footer {
 
 
 }
-
 #qmgLicense > img {
     height: 20px;
     float: left;

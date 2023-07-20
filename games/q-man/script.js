@@ -18,9 +18,9 @@ let snowflakes = 0;
 let isSolved = false;
 let isSnowflake = false;
 let rounds=0;
-let seeker = ""
+let seeker = "";
 document.getElementById('confirmBox').style.display = 'none';
-document.addEventListener('keydown', keyPress)
+document.addEventListener('keydown', keyPress);
 function keyPress(k, regex) {
     let char = k.key;
     if(char.length == 1) {
@@ -33,18 +33,15 @@ function keyPress(k, regex) {
 function startGame(){
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
     const SB = document.getElementById('startBox');
-    SB.style.display = 'none'
-    getWord()
+    SB.style.display = 'none';
+    getWord();
 }
 function showTP(toolTip){
-    // const toolTip = document.getElementsByClassName('toolTip');
     toolTip.style.display = 'block';
 }
 function hideTP(toolTip){
-    // const toolTip = document.getElementByClassName('toolTip');
     toolTip.style.display = '';
 }
-
 function infoButton() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
     const info = document.getElementById('instructions');
@@ -81,7 +78,7 @@ function cancelYes() {
     window.location='/Q-Mini-Games/index.html';
 }
 function cancelNo() {
-    reviveLetters()
+    reviveLetters();
 }
 function restartButton() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
@@ -98,11 +95,11 @@ function restartButton() {
 function restartYes() {
     
     gamesPlayed--;
-    resetLetters()
+    resetLetters();
     restart();
 }
 function restartNo() {
-    reviveLetters()
+    reviveLetters();
 }
 function settingsButton() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
@@ -119,7 +116,6 @@ function settingsButton() {
 }
 function snowflakeButton() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
-    
     if (document.getElementById('startBox').style.display == 'none' && settingsDisplayed == false && resultsDisplayed == false && document.getElementById('confirmBox').style.display == 'none') {
         killLetters();
         document.getElementById('confirmBox').style.display = 'block';
@@ -127,19 +123,19 @@ function snowflakeButton() {
         document.getElementById('confirmText').innerHTML = 'Confirming that you are a snowflake will stop the game here and reveal the secret word. This will be counted as a snowflake and has the same impact on your percentage stat as a loss.';
         document.getElementById('confirmNo').innerHTML = 'No Way!';
         document.getElementById('confirmYes').innerHTML = 'I sure Am!';
-        seeker = 'snowflake'
+        seeker = 'snowflake';
         
     }
 }
 function snowflakeYes() {
-    fillWord()
+    fillWord();
     isSolved = false;
     isSnowflake = true;
-    snowflakes++
-    setTimeout(displayResults, 1000)
+    snowflakes++;
+    setTimeout(displayResults, 1000);
 }
 function snowflakeNo() {
-    reviveLetters()
+    reviveLetters();
 }
 function confirmYes() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
@@ -160,7 +156,7 @@ function confirmYes() {
         default:
 
     }
-    seeker = ""
+    seeker = "";
 }
 function confirmNo() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
@@ -181,12 +177,12 @@ function confirmNo() {
         default:
             
     }
-    seeker = ""
+    seeker = "";
 }
 function killLetters() {
     let l;
     for(i = 65; i < 91; i++){
-        l = String.fromCharCode(i)
+        l = String.fromCharCode(i);
         if (document.getElementById('letter' + l).className == "letterCard"){
             document.getElementById('letter' + l).className = "killedLetterCard";
         }
@@ -196,7 +192,7 @@ function killLetters() {
 function reviveLetters() {
     let l;
     for(i = 65; i < 91; i++){
-        l = String.fromCharCode(i)
+        l = String.fromCharCode(i);
         if (document.getElementById('letter' + l).className == "killedLetterCard"){
             document.getElementById('letter' + l).className = "letterCard";
         }
@@ -215,9 +211,9 @@ function resetLetters() {
 }
 
 function fillWord() {
-    let l = ""
+    let l = "";
     for(i = 0; i < (secret.length); i++) {
-        l = secret.charAt(i)
+        l = secret.charAt(i);
         
         if (document.getElementById('letter' + (i + 1)).className == 'letterBlank') {
             document.getElementById('letter' + (i + 1)).innerHTML = l; 
@@ -243,30 +239,27 @@ function letterClick(l) {
     }
 }
 function letterSolver(l) {
-    let letterCorrect = false
+    let letterCorrect = false;
     for(i=0; i < (secret.length); ++i){
         if (l == secret.charAt(i)) {
             if (document.getElementById('letter' + (i + 1)).className == 'letterBlank') {
                 document.getElementById('letter' + (i + 1)).innerHTML = l;
                 document.getElementById('letter' + (i + 1)).className = 'letterSolved';
-                letterCorrect = true
+                letterCorrect = true;
             }
         }
     }
     if (letterCorrect == true) {
         document.getElementById('letter' + l).style.backgroundColor = 'Green';
-        stage++
+        stage++;
         if (mute == false){new Audio('./sounds/rightanswer.mp3').play();}
-        // setTimeout(stageUpdate, 2000);
-        stageUpdate()
-        // setTimeout(checkSolved, 2000);
-        checkSolved()
+        stageUpdate();
+        checkSolved();
     } else {
         document.getElementById('letter' + l).style.backgroundColor = 'Red';
-        stage--
+        stage--;
         if (mute == false){new Audio('./sounds/wronganswer.mp3').play();}
-        // setTimeout(stageUpdate, 2000);
-        stageUpdate()
+        stageUpdate();
     }
     
 }
@@ -280,15 +273,12 @@ function checkSolved() {
     }
 }
 function solver() {
-    isSolved = true
-    // if (currentStage == 7) {
-    //     isSolved = true
-    // } else {isSolved = false}
+    isSolved = true;
     displayResults();
 }
 function stageUpdate() {
     
-    if (stage > 7) {stage = 7}
+    if (stage > 7) {stage = 7;}
     if (stage != currentStage) {
         if (currentStage < 8 && currentStage >= 0){
                 document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage" + stage + ".png')";
@@ -297,31 +287,23 @@ function stageUpdate() {
             currentStage = stage;
         }
         if (stage == 0) { youLose()}
-            
-            
-        
     }
 }
 function youLose(){
-    document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage0.png"
+    document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage0.png";
     currentStage = 0
-    fillWord()
-    displayResults()
+    fillWord();
+    displayResults();
 }
-
-
 function restart(){
     currentStage = 0;
     resetLetters();
     getWord();
     isSnowflake = false;
     isSolved = false;
-    
-    
 }
-
 function getWord() {
-    gamesPlayed++
+    gamesPlayed++;
     switch (diff) {
     case 'easy':
         secret = eWords[Math.floor((Math.random() * eWords.length) + 1)];
@@ -350,7 +332,7 @@ function displayResults() {
 }
 function isWinner() {
     let message = document.getElementById('message');
-    const winnerArray = ['Winner Winner Winner!', 'Cangratulations! You Won!', "You're A Real Winner!", 'Winner, Winner, Chicken Dinner', 'You Win, Qortal Wins!', 'We Have A Winner!']
+    const winnerArray = ['Winner Winner Winner!', 'Cangratulations! You Won!', "You're A Real Winner!", 'Winner, Winner, Chicken Dinner', 'You Win, Qortal Wins!', 'We Have A Winner!'];
     let blurb = document.getElementById('blurb');
     let p; // win percentage
     let ls; //losses
@@ -373,18 +355,18 @@ function isWinner() {
         message.innerHTML = 'Oh Sorry, You Lost!';
         blurb.innerHTML = 'Please try again! Qortal needs your help to get more nodes up and running';
         if (mute == false){new Audio('./sounds/wahwahwah.mp3').play();}
-    } else {message.innerHTML = 'ERROR: 5B29d1s'}
+    } else {message.innerHTML = 'ERROR: 5B29d1s';}
     if(gamesPlayed == wins && gamesPlayed > 0) {
         p = 100;
     }else if (gamesPlayed >0) {
         p = Math.floor((wins / gamesPlayed) * 100);
     } else {p=0;}
     if(isNaN(gamesPlayed - (wins + snowflakes))) {
-        ls = 0
+        ls = 0;
     } else {ls = (gamesPlayed - (wins + snowflakes))}
     document.getElementById('statGames').innerHTML = gamesPlayed;
     document.getElementById('statWins').innerHTML = wins;
-    document.getElementById('statLosses').innerHTML = ls
+    document.getElementById('statLosses').innerHTML = ls;
     document.getElementById('statSnowflakes').innerHTML = snowflakes;
     document.getElementById('statPercent').innerHTML = p + '%';
      
@@ -393,15 +375,14 @@ function playAgain() {
     if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
     document.getElementById('playAgain').style.display = 'none';
     resultsDisplayed = false;
-    restart()
-    
+    restart();
 }
 function runAway() { window.location = '/Q-Mini-Games/index.html';}
 function setWord(w) {
     const gameArea = document.getElementById('gameArea');
     let letterBlank = document.createElement('div');
     while (gameArea.firstChild) {
-        gameArea.removeChild(gameArea.firstChild)
+        gameArea.removeChild(gameArea.firstChild);
     }
     for(i=1; i < (w.length + 1); ++i){
         letterBlank.className = 'letterBlank';
