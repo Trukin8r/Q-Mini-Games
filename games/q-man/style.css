@@ -113,7 +113,79 @@ nav {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+#playAgain {
+    position: absolute;
+    background-color: oldlace;
+    border: 2px solid midnightblue;
+    border-radius: 15px;
+    margin-top: 75px;
+    width: 700px;
+    padding:12px;
+    display: none;
+}
+#playAgain > #message {
+    color: midnightblue;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+#playAgain > #blurb {
+    font-weight: 700;
+    color: midnightblue;
+    text-align: justify;
+    margin-top: 5px;
+}
+#playAgain > #statsTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: midnightblue;
+    text-align: center;
+    margin-bottom: 3px;
+}
+#statsContainer {
+    display:flex;
+    justify-content: space-around;
+    margin-top: 3px;
+    
+}
+.statCard {
+    text-align: center;
+    color: midnightblue;
 
+}
+.statCardTitle,
+.statStat {
+    font-size: 22px;
+    font-weight: 700;
+}
+#playAgainButtons {
+    display:flex;
+    justify-content: space-around;
+}
+.paButtons {
+    border: 1px solid midnightblue;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 8px;
+}
+#runAwayButton {
+    background-color: lightcoral;
+    }
+#runAwayButton:hover {
+    background-color: darkred;
+    color: oldlace;
+    cursor: pointer;
+}
+#playAgainButton {
+    background-color: lightgreen;
+}
+#playAgainButton:hover {
+    background-color: darkgreen;
+    color:oldlace;
+    cursor: pointer;
+}
 #selectDiff {
     background-color: lightgreen;
     border: 2px solid midnightblue;
@@ -194,6 +266,20 @@ main {
 .usedLetterCard:hover {
     cursor: not-allowed;
 }
+.killedLetterCard {
+    background-color: darkgray;border-radius: 10px;
+    font-size: 34px;
+    font-weight: 400;
+    width: 32px;
+    text-align: center;
+    margin-top: 50px;
+    height: 40px;
+    border: 1px solid black;
+}
+.killedLetterCard:hover{
+    cursor: not-allowed;
+}
+
 
 .letterCard:hover {
     background-color: lightgreen;

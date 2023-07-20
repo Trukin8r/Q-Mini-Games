@@ -1,8 +1,7 @@
 let mute = false;
 let target;
 let keyP = "";
-let wordFile = "./easywords.csv";
-let regLet = /[a-zA-Z]/;
+const regLet = /[a-zA-Z]/;
 let secret;
 let stage = 3;
 let currentStage = 3;
@@ -11,13 +10,18 @@ let gamesWon = 0;
 let gamesSolved = 0;
 let infoDisplayed = false;
 let settingsDisplayed = false;
-let diff = 'medium';
-
+let resultsDisplayed = false;
+let diff = 'med';
+let wins = 0;
+let losses = 0;
+let snowflakes = 0;
+let isSolved = false;
+let isSnowflake = false;
+let rounds=0
 
 document.addEventListener('keydown', keyPress)
 function keyPress(k, regex) {
     let char = k.key;
-    console.log(char.length);
     if(char.length == 1) {
         if(regLet.test(char)) {
             char = char.toUpperCase();
@@ -44,7 +48,6 @@ function infoButton() {
     if (infoDisplayed == false) {
         info.style.display = 'block';
         infoDisplayed = true;
-        console.log(infoDisplayed)
     } else {
         info.style.display = 'none';
         infoDisplayed = false;
@@ -69,6 +72,7 @@ function cancelButton() {
 }
 function restartButton() {
     if(confirm('Do you really want to lose your progress and restart Q-Man with a new word?')){
+        gamesPlayed--
         restart();
     }
 }
@@ -90,22 +94,49 @@ function snowflakeButton() {
 }
 
 function snowFlake() {
-    // let lc = 65;
-    let l = "A"
-    if (document.getElementById('startBox').style.display == 'none' && settingsDisplayed == false) {  
+    if (document.getElementById('startBox').style.display == 'none' && settingsDisplayed == false && resultsDisplayed == false) {  
         if (confirm('Do you really want to lose your progress and restart Q-Man after revealing the current word?')) {
         fillWord()
-        for(i = 65; i < 91; i++){
-            l = String.fromCharCode(i)
-            if (document.getElementById('letter' + l).className == "letterCard"){
-                document.getElementById('letter' + l).className = "usedLetterCard"
-            }
-
-        }
-        //getWord() // Need to create and call a reset function
+        isSolved = false;
+        isSnowflake = true;
+        snowflakes++
+        killLetters()
+        
+        setTimeout(displayResults, 1000)
         }
     }
 }
+function killLetters() {
+    let l;
+    for(i = 65; i < 91; i++){
+        l = String.fromCharCode(i)
+        if (document.getElementById('letter' + l).className == "letterCard"){
+            document.getElementById('letter' + l).className = "killedLetterCard";
+        }
+
+    }
+}
+function reviveLetters() {
+    let l;
+    for(i = 65; i < 91; i++){
+        l = String.fromCharCode(i)
+        if (document.getElementById('letter' + l).className == "killedLetterCard"){
+            document.getElementById('letter' + l).className = "LetterCard";
+        }
+
+    }
+}
+function resetLetters() {
+    let l;
+    for(i = 65; i < 91; i++){
+        l = String.fromCharCode(i)
+        document.getElementById('letter' + l).className = "letterCard";
+        document.getElementById('letter' + l).style.backgroundColor = "";
+
+
+    }
+}
+
 function fillWord() {
     let l = ""
     for(i = 0; i < (secret.length); i++) {
@@ -133,15 +164,12 @@ function letterClick(l) {
         }
         input.className = 'usedLetterCard';
         letterSolver(l);
-        // stageUpdate();
-        // checkSolved();
-        // console.log('letter ' + l);
+        
     }
 }
 function letterSolver(l) {
     let letterCorrect = false
     for(i=0; i < (secret.length); ++i){
-        // console.log(secret.charAt(i))
         if (l == secret.charAt(i)) {
             if (document.getElementById('letter' + (i + 1)).className == 'letterBlank') {
                 document.getElementById('letter' + (i + 1)).innerHTML = l;
@@ -172,14 +200,19 @@ function checkSolved() {
         for(i = 1; i < (secret.length +1); i++) {
             if (document.getElementById('letter' + i).className == 'letterBlank') { break solved; }
         }
-        setTimeout(solved, 1500);
+        solved = true;
+        setTimeout(solver(), 1500);
     }
 }
-function solved() {
-    new Audio('./sounds/success-fanfare-trumpets.mp3').play();
-    alert('You Won')
+function solver() {
+    isSolved = true
+    // if (currentStage == 7) {
+    //     isSolved = true
+    // } else {isSolved = false}
+    displayResults();
 }
 function stageUpdate() {
+    
     if (stage > 7) {stage = 7}
     if (stage != currentStage) {
         // if (currentStage < stage) {
@@ -188,43 +221,110 @@ function stageUpdate() {
         //         new Audio('./sounds/wahwahwah.mp3').play();
         //     }    
     
-    if (currentStage < 7 && currentStage > 0){
-            document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage" + stage + ".png')"
-            currentStage = stage
-    }
-    if (stage == 0) { youLose()}
+        if (currentStage < 8 && currentStage >= 0){
+                document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage" + stage + ".png')";
+                currentStage = stage;
+        } else {
+            currentStage = stage;
+        }
+        if (stage == 0) { youLose()}
             
             
         
     }
 }
 function youLose(){
-    
+    document.getElementById('gameBoard').style.backgroundImage = "url('./images/Stage0.png"
+    currentStage = 0
+    fillWord()
+    displayResults()
 }
 
 
 function restart(){
-    // need some work here to restart the game after a game completes or when the restart button is pressed
+    currentStage = 0;
+    resetLetters();
+    getWord();
+    isSnowflake = false;
+    isSolved = false;
+    
+    
 }
 
 function getWord() {
+    gamesPlayed++
     switch (diff) {
     case 'easy':
         secret = eWords[Math.floor((Math.random() * eWords.length) + 1)];
+        stage = 5;
         break;
     case 'med':
         secret = mWords[Math.floor((Math.random() * mWords.length) + 1)];
+        stage = 4;
         break;
     case 'hard':
         secret = hWords[Math.floor((Math.random() * hWords.length) + 1)];
+        stage = 3;
         break;
     default:
         secret = mWords[Math.floor((Math.random() * mWords.length) + 1)];
     }
     console.log(secret);
     setWord(secret);
+    stageUpdate();
 }
-
+function displayResults() {
+    resultsDisplayed = true;
+    setTimeout(isWinner(), 1000);
+    document.getElementById('playAgain').style.display = 'block';
+    document.getElementById('playAgainButton').focus();
+}
+function isWinner() {
+    let message = document.getElementById('message');
+    const winnerArray = ['Winner Winner Winner!', 'Cangratulations! You Won!', "You're A Real Winner!", 'Winner, Winner, Chicken Dinner', 'You Win, Qortal Wins!', 'We Have A Winner!']
+    let blurb = document.getElementById('blurb');
+    let p; // win percentage
+    let ls; //losses
+    if (isSolved == true && currentStage == 7) {
+        wins++;
+        document.getElementById('message').innerHTML = winnerArray[Math.floor((Math.random() * winnerArray.length))];
+        document.getElementById('blurb').innerHTML = 'Great job! Thanks to your help, Q-man has been able to activate enough nodes that Qortal can never be shut down.';
+        new Audio('./sounds/success-fanfare-trumpets.mp3').play();
+    } else if (isSolved == true && currentStage < 7 && currentStage > 0) {
+        message.innerHTML = 'You Came So Close!';
+        blurb.innerHTML = 'You discovered the secret word, but Qortal still needs more nodes! Try again and see if you can help Q-man get all of the nodes activated.';
+        new Audio('./sounds/wahwahwah.mp3').play();
+    } else if (isSnowflake == true){
+        document.getElementById('message').innerHTML = 'Sorry, Snowflakes Never Win!';
+        document.getElementById('blurb').innerHTML = '';
+        new Audio('./sounds/wahwahwah.mp3').play();
+    } else if (currentStage == 0) {
+        message.innerHTML = 'Oh Sorry, You Lost!';
+        blurb.innerHTML = 'Please try again! Qortal needs your help to get more nodes up and running';
+        new Audio('./sounds/wahwahwah.mp3').play();
+    } else {message.innerHTML = 'ERROR: 5B29d1s'}
+    if(gamesPlayed == wins && gamesPlayed > 0) {
+        p = 100;
+    }else if (gamesPlayed >0) {
+        p = Math.floor((wins / gamesPlayed) * 100);
+    } else {p=0;}
+    if(isNaN(gamesPlayed - (wins + snowflakes))) {
+        ls = 0
+    } else {ls = (gamesPlayed - (wins + snowflakes))}
+    document.getElementById('statGames').innerHTML = gamesPlayed;
+    document.getElementById('statWins').innerHTML = wins;
+    document.getElementById('statLosses').innerHTML = ls
+    document.getElementById('statSnowflakes').innerHTML = snowflakes;
+    document.getElementById('statPercent').innerHTML = p + '%';
+     
+}
+function playAgain() {
+    document.getElementById('playAgain').style.display = 'none';
+    resultsDisplayed = false;
+    restart()
+    
+}
+function runAway() { window.location = '/Q-Mini-Games/index.html';}
 function setWord(w) {
     const gameArea = document.getElementById('gameArea');
     let letterBlank = document.createElement('div');

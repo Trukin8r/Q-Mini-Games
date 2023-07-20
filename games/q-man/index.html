@@ -86,6 +86,37 @@
             </div>
             <h1 onmousedown="startGame()">Start Game</h1>
         </div>
+        <div id="playAgain" class="playMore">
+            <p id="message">Everybody Wins With Qortal</p>
+            <p id="blurb">Qortal is the only fully-decentralized and censorship-proof platform that gives you, the user, full control over your internet experience. Qortal = Freedom</p>
+            <p id="statsTitle">Your Stats</p>
+            <div id="statsContainer">
+                <div id="gamesCard" class="statCard">
+                    <p class="statCardTitle">Games Played</p>
+                    <p id="statGames" class="statStat">0</p>
+                </div>
+                <div id="winsCard" class="statCard">
+                    <p class="statCardTitle">Wins:</p>
+                    <p id="statWins" class="statStat">0</p>
+                </div>
+                <div id="loseCard" class="statCard">
+                    <p class="statCardTitle"> Losses:</p>
+                    <p id="statLosses" class="statStat">0</p>
+                </div>
+                <div id="snowflakeCard" class="statCard">
+                    <p class="statCardTitle">Snowflakes:</p>
+                    <p id="statSnowflakes" class="statStat">0</p>
+                </div>
+                <div id="percentCard" class="statCard">
+                    <p class="statCardTitle">Percentage:</p>
+                    <p id="statPercent" class="statStat">0 %</p>
+                </div>
+            </div>
+            <div id="playAgainButtons">
+                <p id="runAwayButton" class="paButtons" onmousedown="runAway()">Get Me Outta Here!</p>
+                <p id="playAgainButton" class="paButtons" onmousedown="playAgain()">Play Again</p>
+            </div>
+        </div>
         <div id="letterA" class="letterCard" onmousedown="letterClick('A')">A</div>
         <div id="letterB" class="letterCard" onmousedown="letterClick('B')">B</div>
         <div id="letterC" class="letterCard" onmousedown="letterClick('C')">C</div>
@@ -131,7 +162,7 @@
         <h4>How To Play:</h4>
         <p>The blank lines for the secret word will be displayed at the bottom of your screen. You can either click on one of the letter cards on the screen or press any available letter on your keuboard. If you guess a letter that is in the secret word, it will be added to the correct blank(s) in the secret word and the letter card will turn green. If you guess a letter that is not in the secret word, no blanks will be filled in and the letter card will turn red. You cannot click on or type a red or green letter.</p>
         <h4>Difficulty level:</h4>
-        <p>The three main difficulty levels are easy, medium and hard. Each of these levels has its own word list that the computer will use to randomly pick the secret word. These lists were created to reflect the reading level of the words with a smaller emphasis on how challenging they might be to solve. Each level will also start out with a different number of active nodes. The medium level has gthe largest word list and is where most players should start. To change difficulty level while playing, you can use the settings(gear) button on the navigation bar and select a different difficulty. The next time the computer picks a secret word it will use the new difficulty level you have selected.</p>
+        <p>The three main difficulty levels are easy, medium and hard. Each of these levels has its own word list that the computer will use to randomly pick the secret word. These lists were created to reflect the reading level of the words with a smaller emphasis on how challenging they might be to solve. Each level will also start out with a different number of active nodes. The medium level has the largest word list and is where most players should start. To change difficulty level while playing, you can use the settings(gear) button on the navigation bar and select a different difficulty. The next time the computer picks a secret word it will use the new difficulty level you have selected.</p>
         <h4>Sounds:</h4>
         <p>To mute all sound effects, press the mute (speaker) button. To unmut press the button again.</p>
         <h4>Snowflake:</h4>
