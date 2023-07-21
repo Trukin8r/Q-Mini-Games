@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q-Ship</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <nav>
+        <div id="infoButton" class="navCard">
+            <img id="infoImg" class="navButton" src="./images/Help2Button.png" alt="Info Button" onmouseover="showTP(document.getElementById('infoTip'))" onmouseout="hideTP(document.getElementById('infoTip'))" onmousedown="infoButton()">
+            
+        </div>
+        <div id="muteButton" class="navCard">
+            <img id = "muteImg" class="navButton" src="./images/AudioButton.png" alt="Mute Button" onmouseover="showTP(document.getElementById('muteTip'))" onmouseout="hideTP(document.getElementById('muteTip'))" onmousedown="muteButton()">
+        </div>
+        <div id="cancelButton" class="navCard">
+            <img id="cancelImg" class="navButton" src="./images/XButton.png" alt="Cancel Button" onmouseover="showTP(document.getElementById('cancelTip'))" onmouseout="hideTP(document.getElementById('cancelTip'))" onmousedown="cancelButton()">
+        </div>
+        <div id="RestartButton" class="navCard">
+            <img id="restartImg" class="navButton" src="./images/RestartButton.png" alt="Restart Button" onmouseover="showTP(document.getElementById('restartTip'))" onmouseout="hideTP(document.getElementById('restartTip'))" onmousedown="restartButton()">
+        </div>
+        <div id="settingsButton" class="navCard">
+            <img id="settingsImg" class="navButton" src="./images/SettingsButton.png" alt="Settings Button" onmouseover="showTP(document.getElementById('setTip'))" onmouseout="hideTP(document.getElementById('setTip'))" onmousedown="settingsButton()">
+        </div>
+        
+    </nav>
+    <canvas></canvas>
+    
+</body>
+<footer>
+    <div id="qmgLicense">
+        <img src="./images/copyright-free.png" alt="Copyright free image">  <H4>Q-Mini-Games is offered to you as-is, without license, without warrantee, and without any other promises. Donations and attributions are always apprecieciated.</H4>
+    </div>
+</footer>
+<script src = './game.js'></script>
+</html>

@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 1020px;
+    margin: auto;
+    border-radius: 25px;
+    margin-top: 8px;
+    gap: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav {
+    width: 1020px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+    background-color: midnightblue;
+    border-radius: 25px;
+}
+.navCard {
+    width: 40px;
+}
+.navButton {
+    height:35px;
+}
+.navButton:hover {
+    height:40px;
+}
+canvas {
+    background-color: black;
+    border-radius: 25px;
+}
+
+
+
+
+
+
+footer {
+    background-color: midnightblue;
+    color: lightslategray;
+    border-radius: 25px;
+
+
+}
+#qmgLicense > img {
+    height: 20px;
+    float: left;
+    margin: 5px;
+}
