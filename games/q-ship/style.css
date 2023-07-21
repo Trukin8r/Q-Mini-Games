@@ -28,6 +28,37 @@ nav {
 .navButton:hover {
     height:40px;
 }
+#main {
+    display: flex;
+    justify-content: center;
+}
+.toolTip {
+    position: absolute;
+    /* margin:5px; */
+    height:15;
+    border:2px solid midnightblue;
+    border-radius: 15px;
+    background-color: papayawhip;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px;
+    display:none;
+}
+#infoTip {
+    margin-right: 250px;
+}
+#muteTip {
+    margin-right: 185px;
+}
+#cancelTip {
+    width: 88px;
+}
+#restartTip {
+    margin-left: 85px;
+}
+#setTip {
+    margin-left: 165px;
+}
 canvas {
     background-color: black;
     border-radius: 25px;
