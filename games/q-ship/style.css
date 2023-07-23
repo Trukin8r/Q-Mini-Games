@@ -81,3 +81,6 @@ footer {
     float: left;
     margin: 5px;
 }
+#qImg {
+    display: none;
+}
