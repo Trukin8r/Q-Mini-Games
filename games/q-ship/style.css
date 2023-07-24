@@ -1,3 +1,7 @@
+@font-face {
+    font-family: digitbold;
+    src: url(./data/digitbold.ttf);
+}
 body {
     display: flex;
     flex-direction: column;
