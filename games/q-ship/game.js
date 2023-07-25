@@ -22,9 +22,11 @@ let jSpeed = .5; //Space Junk base speed
 let jSpeed_F = .25; // Space Junk minimum speed
 let mineF = .002; // Space Mine release chance
 let qRate = .45; // Qortal spawn rate
-let launchC = 0;//
-let launchR = 0;
-let mute = 0;
+// let launchC = 0;
+// let launchR = 0;
+let mute = false;
+let seeker = "";
+let infoDisplayed = false;
 
 const keys = {
     w: {
@@ -68,13 +70,16 @@ function loadAudio() {
 window.addEventListener('keydown', (e) => {
     switch (e.code) {
         case 'KeyW':
-            keys.w.press = true
+        case 'ArrowUp':
+            keys.w.press = true;
             break;
         case 'KeyA':
-            keys.a.press = true
+        case 'ArrowLeft':
+            keys.a.press = true;
             break;
         case 'KeyD':
-            keys.d.press = true
+        case 'ArrowRight':
+            keys.d.press = true;
             break;
         case 'Space':
             
@@ -90,25 +95,29 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('keyup', (e) => {
     switch (e.code) {
         case 'KeyW':
-            keys.w.press = false
+        case 'ArrowUp':
+            keys.w.press = false;
+            if(paused) pauseButton();
             break;
         case 'KeyA':
-            keys.a.press = false
+        case 'ArrowLeft':
+            keys.a.press = false;
+            if(paused) pauseButton();
             break;
         case 'KeyD':
-            keys.d.press = false
+        case 'ArrowRight':
+            keys.d.press = false;
+            if(paused) pauseButton();
             break;
         case 'Space':
+            if(paused) pauseButton();
             launch(); 
             break;
         case 'KeyP':
-            paused = !paused;
-            console.log('Paused: ' + paused)
-            if (!paused){
-                play()
-            }
+            pauseButton();
             break;
     }
+    // console.log(e)
 });
 canvas.width = 1020;
 canvas.height = 600;
@@ -199,7 +208,7 @@ const objectInterval = window.setInterval(() => {
                 })
                 )
             } else if (Math.random() < qRate) {
-                new Audio('./sounds/Q-spawn.mp3').play()
+                if(!mute) new Audio('./sounds/Q-spawn.mp3').play();
                 qortal.push(
                     new Qortal({
                         posit: {
@@ -221,7 +230,7 @@ const objectInterval = window.setInterval(() => {
 function launch() {
     if (torpedos.length < tCount && !paused){
         // sfx[1].play()
-        new Audio('./sounds/8-bit-laser.mp3').play();
+        if(!mute) new Audio('./sounds/8-bit-laser.mp3').play();
         switch(powerUp) {
             case 0:
             case 1:
@@ -667,7 +676,7 @@ function updateLevel(){
 
     }
     if (newLevel > level){
-        new Audio('./sounds/levelUp-1.mp3').play();
+        if(!mute) new Audio('./sounds/levelUp-1.mp3').play();
         level = newLevel
         let n;
         switch (level) {
@@ -858,7 +867,7 @@ function updatePower(){
     }
 }
 function gameOver() {
-    new Audio('./sounds/death.mp3').play();
+    if(!mute) new Audio('./sounds/death.mp3').play();
     ctx.font = "90px digitbold";
     ctx.fillStyle = 'lightcoral';
     ctx.fillText('GAME OVER', 405, 340);
@@ -884,7 +893,7 @@ function play() {
             if(cCollision(torpedo, sjunk)) {
                 if (sjunk.radius < 45){
                     // sfx[7].play();
-                    new Audio('./sounds/spaceJunk-1.mp3').play();
+                    if(!mute) new Audio('./sounds/spaceJunk-1.mp3').play();
                     if (sjunk.type == 1){
                         score += 25;
                     } else if(sjunk.type == 2){
@@ -896,7 +905,7 @@ function play() {
                     
                 } else {
                     // sfx[8].play()
-                    new Audio('./sounds/spaceJunkImpact.mp3').play();
+                    if(!mute) new Audio('./sounds/spaceJunkImpact.mp3').play();
                     sjunk.radius = (sjunk.radius * .5);
                     score += 10;
                 }
@@ -937,7 +946,7 @@ function play() {
             } else {
                 powerUp--;
             }
-            new Audio('./sounds/powerDown-1.mp3').play();
+            if(!mute) new Audio('./sounds/powerDown-1.mp3').play();
             updatePower();
             junk.splice(i, 1);
         }
@@ -963,7 +972,7 @@ function play() {
                     vy = Math.random() * -1;
                     dy = -1;
                 }
-                new Audio('./sounds/mines-1.mp3').play();
+                if(!mute) new Audio('./sounds/mines-1.mp3').play();
                 mines.push (
                     new Mine({
                         posit: {
@@ -996,11 +1005,13 @@ function play() {
         qortal1.move();
         if (circleTriangleCollision(qortal1, shipV)){
             if (powerUp < 5){
-                new Audio('./sounds/powerUp-1.mp3').play();
+                if(!mute) new Audio('./sounds/powerUp-1.mp3').play();
                 powerUp++;
-                updatePower()
+                score += 200;
+                updateScore();
+                updatePower();
             } else {
-                new Audio('./sounds/error.mp3').play();
+                if(!mute) new Audio('./sounds/error.mp3').play();
             }
         qortal.splice(i,1);
         }
@@ -1025,7 +1036,7 @@ function play() {
                 gameOver();
             } else {
                 mines.splice(i, 1);
-                new Audio('./sounds/powerDown-1.mp3').play()
+                if(!mute) new Audio('./sounds/powerDown-1.mp3').play();
                 powerUp--;
                 updatePower
             }
@@ -1037,11 +1048,11 @@ function play() {
                 if (sjunk.radius < 45){
                     junk.splice(j, 1);
                     // sfx[7].play();
-                    new Audio('./sounds/spaceJunk-1.mp3').play();
+                    if(!mute) new Audio('./sounds/spaceJunk-1.mp3').play();
                 } else {
                     sjunk.radius = (sjunk.radius * .5);
                     // sfx[8].play();
-                    new Audio('./sounds/spaceJunkImpact.mp3').play();
+                    if(!mute) new Audio('./sounds/spaceJunkImpact.mp3').play();
                 }
                 mines.splice(i, 1);
             }
@@ -1068,9 +1079,104 @@ loadAudio();
 loadImages();
 
 play()
-function showTP(toolTip){
+function showTP(toolTip) {
     toolTip.style.display = 'block';
 }
-function hideTP(toolTip){
+function hideTP(toolTip) {
     toolTip.style.display = '';
+}
+function muteButton() {
+    mute = (!mute);
+    if(mute){
+        document.getElementById('muteImg').src = './images/AudioOffButton.png';
+    } else {
+        document.getElementById('muteImg').src = './images/AudioButton.png'
+        if(!mute) new Audio('./sounds/interface-button.mp3').play();
+    }
+}
+function cancelButton() {
+    if(!mute) new Audio('./sounds/interface-button.mp3').play();
+    paused = true;
+    seeker = 'cancel';
+    document.getElementById('confirmBox').style.display = 'block';
+        document.getElementById('confirmTitle').innerHTML = 'Do You Really Want To Quit Q-Ship?';
+        document.getElementById('confirmText').innerHTML = 'Quitting Q-Ship will return you to the Q - Mini Games main menu. All of your stats will be lost!!!';
+        document.getElementById('confirmNo').innerHTML = 'Keep Playing!';
+        document.getElementById('confirmYes').innerHTML = 'Let Me Out!';
+        
+}
+
+function restartButton() {
+    if (!mute) new Audio('./sounds/interface-button.mp3').play();
+    // if (document.getElementById('startBox').style.display == 'none' && resultsDisplayed == false && document.getElementById('confirmBox').style.display == 'none') {
+        paused = true;    
+        seeker = 'restart';
+        document.getElementById('confirmBox').style.display = 'block';
+        document.getElementById('confirmTitle').innerHTML = 'Do You Really Want To Restart Q-Ship?';
+        document.getElementById('confirmText').innerHTML = 'If you restart, you will lose all progress on your current game.';
+        document.getElementById('confirmNo').innerHTML = 'Keep Playing!';
+        document.getElementById('confirmYes').innerHTML = 'I suck at this game!';
+            // }
+}
+function pauseButton() {
+    paused = (!paused);
+    if (paused) {
+        document.getElementById('pauseImg').src = './images/playButton.png'
+        
+    } else {
+        document.getElementById('pauseImg').src = './images/PauseButton.png'
+        play();
+    }
+}
+function confirmYes() {
+    if (!mute) new Audio('./sounds/interface-button.mp3').play();
+    document.getElementById('confirmBox').style.display = 'none';
+    switch (seeker) {
+        // case 'snowflake':
+        //     snowflakeYes();
+        //     break;
+        case 'restart':
+            restart();
+            break;
+
+        case 'cancel':
+            window.location='/Q-Mini-Games/index.html';
+            break;
+
+        default:
+
+    }
+    seeker = "";
+}
+function confirmNo() {
+    if (!mute) new Audio('./sounds/interface-button.mp3').play();
+    document.getElementById('confirmBox').style.display = 'none';
+    switch (seeker) {
+        // case 'snowflake':
+        //     snowflakeNo();
+        //     break;
+        
+        case 'restart':
+        case 'cancel':
+            paused = false;
+            break;
+        default:
+          paused = false;  
+    }
+    seeker = "";
+}
+function restart() {
+    location.reload();
+}
+function infoButton() {
+    if (mute == false){new Audio('./sounds/interface-button.mp3').play();}
+    const info = document.getElementById('instructions');
+    if (infoDisplayed == false) {
+        info.style.display = 'block';
+        infoDisplayed = true;
+    } else {
+        info.style.display = 'none';
+        infoDisplayed = false;
+        
+    }
 }

@@ -60,8 +60,54 @@ nav {
 #restartTip {
     margin-left: 85px;
 }
-#setTip {
-    margin-left: 165px;
+#pauseTip {
+    margin-left: 200px;
+}
+#confirmBox {
+    display: none;
+    background-color: lightblue;
+    border: 2px solid midnightblue;
+    border-radius: 15px;
+    color: midnightblue;
+    text-align: center;
+    width: 600px;
+    position: absolute;
+    padding: 12px;
+    margin-top: 50px;
+    z-index: 10;
+}
+#confirmContainer {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+.confirmButtons {
+    border: 1px solid midnightblue;
+    border-radius: 15px;
+    color: midnightblue;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 700;
+}
+#confirmNo {
+    background-color: lightcoral;
+}
+#confirmNo:hover {
+    background-color: darkred;
+    color: oldlace;
+}
+#confirmYes {
+    background-color: lightgreen;
+}
+#confirmYes:hover {
+    background-color: darkgreen;
+    color: oldlace;
+}
+#confirmText {
+    text-align: justify;
+    font-size: 20px;
+    font-weight: 600;
 }
 canvas {
     background-color: black;
@@ -71,8 +117,53 @@ canvas {
 
 
 
-
-
+#instructions {
+    background-color: lightblue;
+    border: 2px solid midnightblue;
+    border-radius: 25px;
+    padding: 12px;
+    height: 571px;
+    margin-top: -609px;
+    margin-bottom: 5px;
+    display: none;
+    z-index: 15;
+}
+#instructions > h1 {
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 5px;
+}
+#instructions > p {
+    text-align: justify;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+#instructions > h4 {
+    line-height: 1rem;
+    margin-bottom: 1px;
+    margin-top: 3px;
+    font-weight: 900;
+}
+#infoExit {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+    top:-540px;
+    left:965px;
+    /* margin-top: -100; */
+    width: 14px;
+    border: 1px solid midnightblue;
+    border-radius: 5px;
+    padding: 5px;
+    color: midnightblue;
+}
+#infoExit:hover {
+    cursor: pointer;
+    color:red;
+    border-color: red;
+}
 footer {
     background-color: midnightblue;
     color: lightslategray;

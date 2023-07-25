@@ -27,39 +27,73 @@
         <div id="RestartButton" class="navCard">
             <img id="restartImg" class="navButton" src="./images/RestartButton.png" alt="Restart Button" onmouseover="showTP(document.getElementById('restartTip'))" onmouseout="hideTP(document.getElementById('restartTip'))" onmousedown="restartButton()">
         </div>
-        <div id="settingsButton" class="navCard">
+        <!-- <div id="settingsButton" class="navCard">
             <img id="settingsImg" class="navButton" src="./images/SettingsButton.png" alt="Settings Button" onmouseover="showTP(document.getElementById('setTip'))" onmouseout="hideTP(document.getElementById('setTip'))" onmousedown="settingsButton()">
+        </div> -->
+        <div id="pauseButton" class="navCard">
+            <img id="pauseImg" class="navButton" src="./images/playButton.png" alt="Play or Pause Button" onmouseover="showTP(document.getElementById('pauseTip'))" onmouseout="hideTP(document.getElementById('pauseTip'))" onmousedown="pauseButton()">
         </div>
-        
     </nav>
     <div id="main">
         <div id="restartTip" class="toolTip">
             Restart Game
+        </div>
+        <div id="snowTip" class="toolTip">
+            Snowflake
+        </div>
+        <div id="pauseTip" class="toolTip">
+            Pause / Play
+        </div>
+        <div id="cancelTip" class="toolTip">
+            Quit Game
+        </div>
+        <div id="muteTip" class="toolTip">
+            Mute Sounds
+        </div>
+        <div id="infoTip" class="toolTip">
+            Game Instructions
+        </div>
+        <div id="confirmBox">
+            <h1 id="confirmTitle"></h1>
+            <div id="confirmContainer">
+                <p id="confirmNo" class="confirmButtons" onmousedown="confirmNo()"></p>
+                <p id="confirmYes" class="confirmButtons" onmousedown="confirmYes()"></p>
             </div>
-            <div id="snowTip" class="toolTip">
-                Snowflake
-            </div>
-            <div id="setTip" class="toolTip">
-                Game Settings
-            </div>
-            <div id="cancelTip" class="toolTip">
-                Quit Game
-            </div>
-            <div id="muteTip" class="toolTip">
-                Mute Sounds
-            </div>
-            <div id="infoTip" class="toolTip">
-                Game Instructions
-            </div>
+            <p id="confirmText"></p>
+        </div> 
     <canvas>
         
     </canvas>
     </div>
-</body>
+    <div id="instructions" class="hiddenPanel">
+        <h1> Q - Ship Instructions</h1>
+        <h4>About:</h4>
+        <p>Q-Ship is a qortian remake of an arcade classic where your Q-ship must survive the space junk being hurled at it by big government, big tech, and fiat central bankers.</p>
+        <h4>How To Play:</h4>
+        <p>Your goal is to destroy all of the space junk. You will need to move your ship around to aim your photon torpedos and to avoid coming into contct with the space junk or space mines. Every time you hit or destroy a piece of space junk you will receive points. Each 1,000 points moves to a higher (and harder) level. Your goal is to get to the highest level you can.</p>
+        <h4>Controls:</h4>
+        <p>use the A and D or right and left arrow keys to rotate your ship. Use the W or up arrow keys to move forward. Use the space bar to shoot photon torpedos.</p>
+        <h4>Power Ups:</h4>
+        <p>Fly your ship over the Qortal icons to increase your power level, up to level 5. Each power level will allow you to shoot more photon torpedos and in different configurations. You can keep track of your power level by looking at the graph at the top of the screen.</p>
+        <h4>Space Junk:</h4>
+        <p>Space Junk comes in many different sizes and moves at different speeds. Large pieces of space junk will take multiple hits to destroy. Each kind of space junk has special properties:
+            <ul>
+            <li>Big Government continues to grow in size.</li>
+            <li>Big Tech drops random space mines.</li>
+            <li>Fiat will drain all of your power levels in a single hit.</li>
+            </ul>
+        </p>
+        <h4>Space Mines:</h4>
+        <p>Space Mines are small red dots dropped by Big Tech space junk. Space mines will cause damage to your ship just like being hit by space junk. Space mines will also cause damage to other space junk it comes in contact with.</p>
+        <!-- <h4>Restart:</h4>
+        <p>The restart button will end the current game without revealing the secret word and start a new game with the currently selected difficulty. A restart does not count as a completed game and so will not affect your stats in any way.</p> -->
+        <div id="infoExit" onmousedown="infoButton()">X</div>
+    </div>
 <footer>
     <div id="qmgLicense">
         <img src="./images/copyright-free.png" alt="Copyright free image">  <H4>Q-Mini-Games is offered to you as-is, without license, without warrantee, and without any other promises. Donations and attributions are always apprecieciated.</H4>
     </div>
 </footer>
+</body>
 <script src = './game.js'></script>
 </html>
