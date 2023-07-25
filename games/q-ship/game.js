@@ -84,12 +84,12 @@ window.addEventListener('keydown', (e) => {
         case 'Space':
             
             break;
-        case 'KeyL':
-            score += 1000;
-            break;
-        case 'KeyU':
-            powerUp +=1
-            if (powerUp > 5) powerUp = 1;
+        // case 'KeyL':
+        //     score += 1000;
+        //     break;
+        // case 'KeyU':
+        //     powerUp +=1
+        //     if (powerUp > 5) powerUp = 1;
     }
 });
 window.addEventListener('keyup', (e) => {
