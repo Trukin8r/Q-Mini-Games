@@ -5,15 +5,18 @@ const mines = [];
 const junk = [];
 const qortal = [];
 const images = [];
+const sfx = [];
+let animationID;
 let sSpeed = 3;// Ship speed
 let rSpeed = .04; // Ship rotation speed
 let friction = .97; // Ship deceleration rate
 let tSpeed = 4; // torpedo speed
 let tCount = 15; // max torpedos on  screen
+let tRadius = 5; // torpedo size
 let score = 0;
 let level = 1;
 let paused = true;
-let powerUp = 2;
+let powerUp = 1;
 let intJ = 1; //Space Junk Spawn rate
 let jSpeed = .5; //Space Junk base speed
 let jSpeed_F = .25; // Space Junk minimum speed
@@ -21,6 +24,7 @@ let mineF = .002; // Space Mine release chance
 let qRate = .45; // Qortal spawn rate
 let launchC = 0;//
 let launchR = 0;
+let mute = 0;
 
 const keys = {
     w: {
@@ -34,7 +38,7 @@ const keys = {
     }
 }
 function loadImages() {
-    for ( i=0; i < 10; i++) {
+    for ( i=0; i < 11; i++) {
         images[i] = new Image();
     }
     images[0].src = './images/qortal_overlay.png';
@@ -47,9 +51,20 @@ function loadImages() {
     images[7].src = './images/GovC.png';
     images[8].src = './images/GovC.png';
     images[9].src = './images/GovC.png';
-  }
+    images[10].src = './images/powerEmpty.png';
+}
+function loadAudio() {
+    sfx.push(new Audio('./sounds/death.mp3'));
+    sfx.push(new Audio('./sounds/8-bit-laser.mp3'));
+    sfx.push(new Audio('./sounds/mines-1.mp3'));
+    sfx.push(new Audio('./sounds/levelUp-1.mp3'));
+    sfx.push(new Audio('./sounds/powerDown-1.mp3'));
+    sfx.push(new Audio('./sounds/powerUp-1.mp3'));
+    sfx.push(new Audio('./sounds/Q-spawn.mp3'));
+    sfx.push(new Audio('./sounds/spaceJunk-1.mp3'));
+    sfx.push(new Audio('./sounds/spaceJunkImpact.mp3'));
+}
 
-  loadImages()
 window.addEventListener('keydown', (e) => {
     switch (e.code) {
         case 'KeyW':
@@ -65,7 +80,11 @@ window.addEventListener('keydown', (e) => {
             
             break;
         case 'KeyL':
-            score += 1000
+            score += 1000;
+            break;
+        case 'KeyU':
+            powerUp +=1
+            if (powerUp > 5) powerUp = 1;
     }
 });
 window.addEventListener('keyup', (e) => {
@@ -107,7 +126,7 @@ const objectInterval = window.setInterval(() => {
     if(!paused) {
         for(let i = 0; i < intJ; i++) {
             // console.log('index: ' + i);
-            radius = 70 * Math.random() + 25;
+            radius = 60 * Math.random() + 10;
             index = Math.floor(Math.random() * 4)
             type = Math.floor(Math.random() * 4)
             switch (index) {
@@ -180,6 +199,7 @@ const objectInterval = window.setInterval(() => {
                 })
                 )
             } else if (Math.random() < qRate) {
+                new Audio('./sounds/Q-spawn.mp3').play()
                 qortal.push(
                     new Qortal({
                         posit: {
@@ -200,9 +220,13 @@ const objectInterval = window.setInterval(() => {
 
 function launch() {
     if (torpedos.length < tCount && !paused){
+        // sfx[1].play()
+        new Audio('./sounds/8-bit-laser.mp3').play();
         switch(powerUp) {
             case 0:
             case 1:
+                tCount = 5
+                tRadius = 5
                 torpedos.push(
                     new Torpedos({
                         posit: {
@@ -217,6 +241,77 @@ function launch() {
                 );
                 break;
             case 2:
+                tCount = 10
+                tRadius = 5
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: (ship.posit.x + 3.75) + Math.cos(ship.rotate + 3.75) * -30,
+                            y: (ship.posit.y + 3.75) + Math.sin(ship.rotate + 3.75) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * tSpeed,
+                            y: Math.sin(ship.rotate) * tSpeed,
+                        },       
+                    })
+                );
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: (ship.posit.x) + Math.cos(ship.rotate - 3.75) * -30,
+                            y: (ship.posit.y) + Math.sin(ship.rotate - 3.75) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * tSpeed,
+                            y: Math.sin(ship.rotate) * tSpeed,
+                        },       
+                    })
+                );
+                
+                break;
+            case 3:
+                tCount = 15
+                tRadius = 5
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: (ship.posit.x) + Math.cos(ship.rotate + 3.75) * -30,
+                            y: (ship.posit.y) + Math.sin(ship.rotate + 3.75) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * tSpeed,
+                            y: Math.sin(ship.rotate) * tSpeed,
+                        },       
+                    })
+                );
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: (ship.posit.x) + Math.cos(ship.rotate - 3.75) * -30,
+                            y: (ship.posit.y) + Math.sin(ship.rotate - 3.75) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * tSpeed,
+                            y: Math.sin(ship.rotate) * tSpeed,
+                        },       
+                    })
+                );
+                
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: ship.posit.x + Math.cos(ship.rotate) * -30,
+                            y: ship.posit.y + Math.sin(ship.rotate) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * -(tSpeed * .5),
+                            y: Math.sin(ship.rotate) * -(tSpeed * .5),
+                        },       
+                    })
+                );
+                break;  
+            case 4:
+                tCount = 21
                 torpedos.push(
                     new Torpedos({
                         posit: {
@@ -253,7 +348,83 @@ function launch() {
                         },       
                     })
                 );
-                break;  
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: ship.posit.x + Math.cos(ship.rotate) * -30,
+                            y: ship.posit.y + Math.sin(ship.rotate) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * -(tSpeed * .5),
+                            y: Math.sin(ship.rotate) * -(tSpeed * .5),
+                        },       
+                    })
+                );
+                break;
+            case 5:
+                tCount = 25
+                tRadius = 5
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: (ship.posit.x) + Math.cos(ship.rotate + 3.75) * -30,
+                            y: (ship.posit.y) + Math.sin(ship.rotate + 3.75) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * tSpeed,
+                            y: Math.sin(ship.rotate) * tSpeed,
+                        },       
+                    })
+                );
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: (ship.posit.x) + Math.cos(ship.rotate - 3.75) * -30,
+                            y: (ship.posit.y) + Math.sin(ship.rotate - 3.75) * -30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate) * tSpeed,
+                            y: Math.sin(ship.rotate) * tSpeed,
+                        },       
+                    })
+                );
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: ship.posit.x + (Math.cos(ship.rotate)) * 30,
+                            y: ship.posit.y + (Math.sin(ship.rotate)) * 30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate - .3) * tSpeed,
+                            y: Math.sin(ship.rotate - .3) * tSpeed,
+                        },       
+                    })
+                );
+                torpedos.push(
+                    new Torpedos({
+                        posit: {
+                            x: ship.posit.x + (Math.cos(ship.rotate)) * 30,
+                            y: ship.posit.y + (Math.sin(ship.rotate)) * 30,
+                        },
+                        velo: {
+                            x: Math.cos(ship.rotate + .3) * tSpeed,
+                            y: Math.sin(ship.rotate + .3) * tSpeed,
+                        },       
+                    })
+                );
+                // torpedos.push(
+                //     new Torpedos({
+                //         posit: {
+                //             x: ship.posit.x + Math.cos(ship.rotate) * -30,
+                //             y: ship.posit.y + Math.sin(ship.rotate) * -30,
+                //         },
+                //         velo: {
+                //             x: Math.cos(ship.rotate) * -(tSpeed * .5),
+                //             y: Math.sin(ship.rotate) * -(tSpeed * .5),
+                //         },       
+                //     })
+                // );
+                break;
         }
     }
 }    
@@ -286,9 +457,40 @@ class Ship {
     }
     move() {
         this.draw();
-        this.posit.x += this.velo.x;
-        this.posit.y += this.velo.y;
+        if(this.posit.x + this.velo.x - 30 < 0 ){
+            this.posit.x++;
+        } else if (this.posit.x + this.velo.x +30 > canvas.width) {
+            this.posit.x--;
+        }else {
+            this.posit.x += this.velo.x;
+        }
+        if(this.posit.y + this.velo.y - 30 < 0){
+            this.posit.y++;
+        } else if (this.posit.y + this.velo.y +30 > canvas.height){
+            this.posit.y--;
+        } else {
+            this.posit.y += this.velo.y;
+        }
     }
+    getVertices() {
+        const cos = Math.cos(this.rotate)
+        const sin = Math.sin(this.rotate)
+    
+        return [
+          {
+            x: this.posit.x + cos * 30 - sin * 0,
+            y: this.posit.y + sin * 30 + cos * 0,
+          },
+          {
+            x: this.posit.x + cos * -10 - sin * 10,
+            y: this.posit.y + sin * -10 + cos * 10,
+          },
+          {
+            x: this.posit.x + cos * -10 - sin * -10,
+            y: this.posit.y + sin * -10 + cos * -10,
+          },
+        ]
+      }
 }
 class Torpedos {
     constructor({ posit, velo }) {
@@ -325,10 +527,10 @@ class Junk {
         
         ctx.drawImage(
             images[this.img],
-            this.posit.x,
-            this.posit.y,
-            this.radius,
-            this.radius
+            this.posit.x - this.radius,
+            this.posit.y - this.radius,
+            this.radius * 2,
+            this.radius * 2
         )
         
     }
@@ -351,18 +553,19 @@ class Qortal {
     constructor({ posit, velo, radius, }) {
         this.posit = posit;
         this.velo = velo;
-        this.radius = 15;
+        this.radius = 13;
         
     }
     spawn() {
         ctx.drawImage(
                 // document.getElementById('qImg'),
                 images[0],
-                this.posit.x,
-                this.posit.y,
-                25,
-                25
+                this.posit.x - this.radius,
+                this.posit.y - this.radius,
+                this.radius * 2,
+                this.radius * 2
             )
+        
     }
     move() {
         this.spawn();
@@ -385,6 +588,7 @@ class Mine {
         ctx.fillStyle = 'red';
         ctx.fill();
         ctx.closePath();
+        
     }
     move() {
         this.spawn();
@@ -410,7 +614,52 @@ function cCollision(c1, c2){
     } else {
         return false;
     }
+}
+function circleTriangleCollision(circle, triangle) {
+    // Check if the circle is colliding with any of the triangle's edges
+    for (let i = 0; i < 3; i++) {
+      let start = triangle[i]
+      let end = triangle[(i + 1) % 3]
+  
+      let dx = end.x - start.x
+      let dy = end.y - start.y
+      let length = Math.sqrt(dx * dx + dy * dy)
+  
+      let dot =
+        ((circle.posit.x - start.x) * dx +
+          (circle.posit.y - start.y) * dy) /
+        Math.pow(length, 2)
+  
+      let closestX = start.x + dot * dx
+      let closestY = start.y + dot * dy
+  
+      if (!isPointOnLineSegment(closestX, closestY, start, end)) {
+        closestX = closestX < start.x ? start.x : end.x
+        closestY = closestY < start.y ? start.y : end.y
+      }
+  
+      dx = closestX - circle.posit.x
+      dy = closestY - circle.posit.y
+  
+      let distance = Math.sqrt(dx * dx + dy * dy)
+  
+      if (distance <= circle.radius) {
+        return true
+      }
     }
+  
+    // No collision
+    return false
+  }
+  
+  function isPointOnLineSegment(x, y, start, end) {
+    return (
+      x >= Math.min(start.x, end.x) &&
+      x <= Math.max(start.x, end.x) &&
+      y >= Math.min(start.y, end.y) &&
+      y <= Math.max(start.y, end.y)
+    )
+  }
 function updateLevel(){
     let newLevel = 1;
     if (score > 1000) {
@@ -418,6 +667,7 @@ function updateLevel(){
 
     }
     if (newLevel > level){
+        new Audio('./sounds/levelUp-1.mp3').play();
         level = newLevel
         let n;
         switch (level) {
@@ -565,12 +815,64 @@ function updateScore(){
     ctx.fillText('Score: ' + score, 25, 40);
     updateLevel();
 }
+function updatePower(){ 
+    ctx.font = "40px digitbold";
+    ctx.fillStyle = 'deepskyblue';
+    ctx.fillText('Power: ', 375, 40);
+    switch(powerUp){
+        case 1:
+            ctx.drawImage(images[0], 455, 15, 30, 30);
+            ctx.drawImage(images[10], 485, 15, 30, 30);
+            ctx.drawImage(images[10], 515, 15, 30, 30);
+            ctx.drawImage(images[10], 545, 15, 30, 30);
+            ctx.drawImage(images[10], 575, 15, 30, 30);
+            break;
+        case 2:
+            ctx.drawImage(images[0], 455, 15, 30, 30);
+            ctx.drawImage(images[0], 485, 15, 30, 30);
+            ctx.drawImage(images[10], 515, 15, 30, 30);
+            ctx.drawImage(images[10], 545, 15, 30, 30);
+            ctx.drawImage(images[10], 575, 15, 30, 30);
+            break;
+        case 3:
+            ctx.drawImage(images[0], 455, 15, 30, 30);
+            ctx.drawImage(images[0], 485, 15, 30, 30);
+            ctx.drawImage(images[0], 515, 15, 30, 30);
+            ctx.drawImage(images[10], 545, 15, 30, 30);
+            ctx.drawImage(images[10], 575, 15, 30, 30);
+            break;
+        case 4:
+            ctx.drawImage(images[0], 455, 15, 30, 30);
+            ctx.drawImage(images[0], 485, 15, 30, 30);
+            ctx.drawImage(images[0], 515, 15, 30, 30);
+            ctx.drawImage(images[0], 545, 15, 30, 30);
+            ctx.drawImage(images[10], 575, 15, 30, 30);
+            break;
+        case 5:
+            ctx.drawImage(images[0], 455, 15, 30, 30);
+            ctx.drawImage(images[0], 485, 15, 30, 30);
+            ctx.drawImage(images[0], 515, 15, 30, 30);
+            ctx.drawImage(images[0], 545, 15, 30, 30);
+            ctx.drawImage(images[0], 575, 15, 30, 30);
+            break;
+    }
+}
+function gameOver() {
+    new Audio('./sounds/death.mp3').play();
+    ctx.font = "90px digitbold";
+    ctx.fillStyle = 'lightcoral';
+    ctx.fillText('GAME OVER', 405, 340);
+    window.cancelAnimationFrame(animationID);
+    clearInterval(objectInterval);
+}
 function play() {
     if(paused){
         updateLevel()
     } else {
-    window.requestAnimationFrame(play);
+    animationID = window.requestAnimationFrame(play);
+    
     }
+    const shipV = ship.getVertices();
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ship.move();
@@ -581,6 +883,8 @@ function play() {
             const sjunk = junk[j];
             if(cCollision(torpedo, sjunk)) {
                 if (sjunk.radius < 45){
+                    // sfx[7].play();
+                    new Audio('./sounds/spaceJunk-1.mp3').play();
                     if (sjunk.type == 1){
                         score += 25;
                     } else if(sjunk.type == 2){
@@ -591,6 +895,8 @@ function play() {
                     junk.splice(j, 1);
                     
                 } else {
+                    // sfx[8].play()
+                    new Audio('./sounds/spaceJunkImpact.mp3').play();
                     sjunk.radius = (sjunk.radius * .5);
                     score += 10;
                 }
@@ -604,7 +910,9 @@ function play() {
                 qortal.splice(q, 1)
                 torpedos.splice(i, 1)
             }
+            
         }
+        
         if (
             torpedo.posit.x + torpedo.radius < 0 ||
             torpedo.posit.x - torpedo.radius > canvas.width ||
@@ -619,6 +927,21 @@ function play() {
     for (let i = junk.length - 1; i >= 0; i--) {
         const sjunk = junk[i];
         sjunk.move();
+        if (circleTriangleCollision(sjunk, shipV)){
+            console.log("power: " + powerUp)
+            if(powerUp == 1){
+                console.log(powerUp)
+                gameOver();
+            } else if (sjunk.type == 1){
+                powerUp = 1;
+            } else {
+                powerUp--;
+            }
+            new Audio('./sounds/powerDown-1.mp3').play();
+            updatePower();
+            junk.splice(i, 1);
+        }
+            
         
         if (sjunk.type == 2){
             let vx;
@@ -640,6 +963,7 @@ function play() {
                     vy = Math.random() * -1;
                     dy = -1;
                 }
+                new Audio('./sounds/mines-1.mp3').play();
                 mines.push (
                     new Mine({
                         posit: {
@@ -670,6 +994,16 @@ function play() {
     for (let i = qortal.length -1; i >= 0; i--) {
         const qortal1 = qortal[i];
         qortal1.move();
+        if (circleTriangleCollision(qortal1, shipV)){
+            if (powerUp < 5){
+                new Audio('./sounds/powerUp-1.mp3').play();
+                powerUp++;
+                updatePower()
+            } else {
+                new Audio('./sounds/error.mp3').play();
+            }
+        qortal.splice(i,1);
+        }
 
         
     }
@@ -686,14 +1020,28 @@ function play() {
         ) {
             mines.splice(i, 1)
         }
+        if (circleTriangleCollision(smine, shipV)){
+            if (powerUp == 1){
+                gameOver();
+            } else {
+                mines.splice(i, 1);
+                new Audio('./sounds/powerDown-1.mp3').play()
+                powerUp--;
+                updatePower
+            }
+            
+        }
         for (let j = junk.length - 1; j >= 0; j--) {
             let sjunk = junk[j]
             if(cCollision(smine, sjunk)) {
                 if (sjunk.radius < 45){
-                  junk.splice(j, 1);
+                    junk.splice(j, 1);
+                    // sfx[7].play();
+                    new Audio('./sounds/spaceJunk-1.mp3').play();
                 } else {
                     sjunk.radius = (sjunk.radius * .5);
-                    
+                    // sfx[8].play();
+                    new Audio('./sounds/spaceJunkImpact.mp3').play();
                 }
                 mines.splice(i, 1);
             }
@@ -711,10 +1059,13 @@ function play() {
     } else if (!keys.d.press && !keys.a.press) ship.rotate = ship.rotate
     if (keys.a.press) {ship.rotate -= rSpeed}
     updateScore();
+    updatePower();
 }
 
 
 ship.draw()
+loadAudio();
+loadImages();
 
 play()
 function showTP(toolTip){
