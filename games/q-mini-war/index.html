@@ -16,7 +16,29 @@
             <img src = "./images/QMWheader.png" alt = "Q-Mini-War Title">
         </div>
     </header>
-
+    <nav id = navBar>
+        <div id="muteButton" class="navCard">
+            <img id = "muteImg" class="navButton" src="./images/AudioButton.png" alt="Mute Button" onmouseover="showTP(document.getElementById('muteTip'))" onmouseout="hideTP(document.getElementById('muteTip'))" onmousedown="muteButton()">
+        </div>
+        <div id="cancelButton" class="navCard">
+            <img id="cancelImg" class="navButton" src="./images/XButton.png" alt="Cancel Button" onmouseover="showTP(document.getElementById('cancelTip'))" onmouseout="hideTP(document.getElementById('cancelTip'))" onmousedown="cancelButton()">
+        </div>
+        <div id="RestartButton" class="navCard">
+            <img id="restartImg" class="navButton" src="./images/RestartButton.png" alt="Restart Button" onmouseover="showTP(document.getElementById('restartTip'))" onmouseout="hideTP(document.getElementById('restartTip'))" onmousedown="restartButton()">
+        </div>
+        
+    </nav>
+    <div id="toolTips">
+        <div id="restartTip" class="toolTip">
+            Restart Game
+            </div>
+            <div id="cancelTip" class="toolTip">
+                Quit Game
+            </div>
+            <div id="muteTip" class="toolTip">
+                Mute Sounds
+            </div>
+    </div>
     <section id = "scoreCard" class = "score">
         <h1>****  SCOREBOARD  ****</h1>
         <div id = "scoreDisplay">
@@ -26,7 +48,7 @@
             <h3 id = "displayTies">Ties: 0</h3>
             <h3 id = "displayPercent">Win Percentage: 0%</h3>
         </div>
-       
+        
     </section>
 
     <section id = "inputArea" class = "show">
@@ -145,8 +167,9 @@
     </section>
 
     <footer id = "footer" class = "footer">
-        <h4><span style = "text-decoration-line: line-through;"> &nbsp©&nbsp</span> &nbsp Copyright? We don't need no stinking copyright! Do what you want with it... I know I did.</h4>
-        <h5>To learn more about Qortal, visit <a href = "www.qortal.org" style = "color: lightblue;">Qortal.org</a>&nbsp; &nbsp; &nbsp; Hand coded with a whole lotta cussin' and only one smashed keyboard by <span id = "truk">Trukin8r</span></h5>
+        <div id="qmgLicense">
+            <img src="./images/copyright-free.png" alt="Copyright free image">  <H4>Q-Mini-Games is offered to you as-is, without license, without warrantee, and without any other promises. Donations and attributions are always apprecieciated.</H4>
+        </div>
     </footer>
     <script src="./script.js"></script>
 </body>

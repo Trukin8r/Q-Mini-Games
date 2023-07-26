@@ -15,6 +15,7 @@ let compResultImg = "";
 let playResultImg = "";
 let playerWin = false;
 let computerWin = false;
+let muted = false;
 const roundsClicked = document.querySelector("#roundsSelect");
 roundsClicked.addEventListener("click", function(e){
     let targetClick = "";
@@ -46,8 +47,18 @@ roundsClicked.addEventListener("click", function(e){
         document.getElementById('playersTurn').className = "show";
         updateRounds();
     }
+    if(!muted) new Audio('./sounds/interface-button.mp3').play();
 });
-
+function muteButton() {
+    if(muted == false) {
+        muted = true;
+        document.getElementById('muteImg').src = './images/AudioOffButton.png';
+    } else {
+        muted = false;
+        document.getElementById('muteImg').src = './images/AudioButton.png';
+        new Audio('./sounds/interface-button.mp3').play();
+    }
+}
 function BGalt() {
     document.getElementById('BGimg').src = "./images/BGJC.png"
 }
@@ -75,25 +86,26 @@ function QCreg() {
 
 function BGselect() {
     playerSelection = "Big Government";
-    PlayResultImg = "./images/BGJC.png";
+    playResultImg = "./images/BGJC.png";
     getComputerChoice()
 }
 function FCselect() {
     playerSelection = "Fiat Currencies";
-    PlayResultImg = "./images/fiat-wow.png";
+    playResultImg = "./images/fiat-wow.png";
     getComputerChoice()
 }
 function BTselect() {
     playerSelection = "Big Tech";
-    PlayResultImg = "./images/BTM.png";
+    playResultImg = "./images/BTM.png";
     getComputerChoice()
 }
 function Qselect() {
     playerSelection = "Qortal";
-    PlayResultImg = "./images/Qcube.png";
+    playResultImg = "./images/Qcube.png";
     getComputerChoice()
 }
 function getComputerChoice() {
+    if(!muted) new Audio('./sounds/interface-button.mp3').play();
     document.getElementById('playersTurn').className = "hide";
     document.getElementById('computersTurn').className = "show";
     let choice = Math.floor(Math.random() *4) +1;
@@ -125,6 +137,11 @@ function getComputerChoice() {
 function cTimer1() {
     computerRandomSelector = Math.floor(Math.random() *8) +1;
     randomSelector(computerRandomSelector);
+    if(!muted){ 
+        const beeper = new Audio('./sounds/beeping-computer.mp3');
+        beeper.volume = .15;
+        beeper.play();
+}   
 }
 function cTimer2() {
     computerRandomSelector = Math.floor(Math.random() *8) +1;
@@ -153,8 +170,10 @@ function cTimer7() {
 function cTimer8() {
     computerRandomSelector = Math.floor(Math.random() *8) +1;
     randomSelector(computerRandomSelector);
+    
 }
 function cTimer9() {
+    if(!muted) new Audio('./sounds/ding-soft.mp3').play();
     document.getElementById("ccImg").src = compResultImg;
     document.getElementById("ccText").innerHTML = computerSelection;
     document.getElementById("ccCard").style = "background-color: PaleGreen";
@@ -251,7 +270,13 @@ function randomSelector(){
     }
         
 }
-
+function cancelButton() {
+    window.location='/Q-Mini-Games/index.html';
+}
+function restartButton(){
+    if(!muted) new Audio('interface-button.mp3').play();
+    window.location.reload();
+}
 function getResult() {
     
     if (computerSelection === "Big Government") {
@@ -421,6 +446,11 @@ function getResult() {
             
 
     }
+    if(!muted && playerWin) {
+        new Audio('./sounds/rightanswer.mp3').play();
+    } else if (!muted) {
+        new Audio('./sounds/wronganswer.mp3').play();
+    }
 }
 function postResult() {
     
@@ -474,6 +504,7 @@ function updateRounds() {
     document.getElementById("displayRounds").innerHTML = "Round: " + currentRound + " / " + rounds;
 }
 function CBclick(){
+    if(!muted) new Audio('./sounds/interface-button.mp3').play();
     if(currentRound == rounds) {
         postFinalResults();
     } else {
@@ -516,24 +547,27 @@ function postFinalResults() {
         document.getElementById("finalPercent").style.color = "Green";
         document.getElementById("finalTitle").innerHTML = "Great Job! - You Won!";
         document.getElementById("finalTitle").style.color = "DarkGreen";
-        } else if (((wins / currentRound) * 100) == 100) {
+        if(!muted) new Audio('./sounds/success-fanfare-trumpets.mp3').play();
+    } else if (((wins / currentRound) * 100) == 100) {
         document.getElementById("finalPercent").style.color = "Green";
         document.getElementById("finalTitle").innerHTML = "Congratulations: You must be a Qortian!";
         document.getElementById("finalTitle").style.color = "DarkGreen";
-
+        if(!muted) new Audio('./sounds/success-fanfare-trumpets.mp3').play();
     } else if (((wins / currentRound) * 100) == 0) {
         document.getElementById("finalPercent").style.color = "Red";
         document.getElementById("finalTitle").innerHTML = "Are You Working For The FBI?";
         document.getElementById("finalTitle").style.color = "Red"
-
+        if(!muted) new Audio('./sounds/wahwahwah.mp3').play();
     } else {
         document.getElementById("finalPercent").style.color = "Red";
         document.getElementById("finalTitle").innerHTML = "Try Again - I'm Sure You'll Win Next Time!";
         document.getElementById("finalTitle").style.color = "Maroon";
+        if(!muted) new Audio('./sounds/failfare.mp3').play();
     }
 
 }
 function restart() {
+    if(!muted) new Audio('./sounds/interface-button.mp3').play();
     document.getElementById("finalResult").className = "hide";
     document.getElementById("inputArea").className = "show";
     document.getElementById("startup").className = "show";
@@ -547,4 +581,10 @@ function restart() {
     currentRound = 0
     rounds = 0
 
+}
+function showTP(toolTip){
+    toolTip.style.display = 'block';
+}
+function hideTP(toolTip){
+    toolTip.style.display = '';
 }
