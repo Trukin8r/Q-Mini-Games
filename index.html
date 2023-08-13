@@ -22,12 +22,39 @@
                 <img id="qmwImg" src="./images/QMWlogo.png" alt="Q Mini War logo">
                 <h4 id="qmwDesc" class="gameDesc">A Qortian perspective on the classic Rock, Paper, Scissors</h4>
             </div>
-            <div id = "qmn" class = "gameCard" onmouseover="cardAlt('qmn')" onmouseout="cardReg('qmn')" onmousedown="window.location='./games/q-man/index.html'">
+            <div id = "qmn" class = "gameCard" onmouseover="cardAlt('qmn')" onmouseout="cardReg('qmn')" onmousedown="window.location='/games/q-man/index.html'">
                 <h3 id="qmnTitle" class="gameTitle">Q-Man</h3>
                 <img id="qmnImg" src="./images/QMNlogo.png" alt="Q Man logo">
-                <h4 id="qmnDesc" class="gameDesc">A Hangman variant where you must save the Q-Man</h4>
+                <h4 id="qmnDesc" class="gameDesc">A Hangman variant where you must help Q-Man save the Qortal network.</h4>
             </div>
             <div id = "qsp" class = "gameCard" onmouseover="cardAlt('qsp')" onmouseout="cardReg('qsp')" onmousedown="window.location='./games/q-ship/index.html'">
+                <h3 id="qspTitle" class="gameTitle">Q-Ship</h3>
+                <img id="qspImg" src="./images/QSP-logo.png" alt="Q Ship logo">
+                <h4 id="qspDesc" class="gameDesc">A remake of the classic arcade game, Asteroids, from a Qortian perspective.</h4>
+            </div>
+            <div id = "otg" class = "gameCard" onmouseover="cardAlt('otg')" onmouseout="cardReg('otg')" onmousedown=showOtherGames()>
+                <h3 id="otgTitle" class="gameTitle">Other Games</h3>
+                <img id="qmmImg" src="./images/Qortalicon.png" alt="Qortal cube logo">
+                <h4 id="qmmDesc" class="gameDesc">Other games from around the Qortal network</h4>
+            </div>
+            <div id = "qmore" class = "gameCard" onmouseover="cardAlt('qmore')" onmouseout="cardReg('qmore')">
+                <h3 id="qmoreTitle" class="gameTitle">More Games</h3>
+                <img id="qmoreImg" src="./images/QMG-Logo(320x320)-Transparent.png" alt="Q Mini Games logo">
+                <h4 id="qmoreDesc" class="gameDesc">More great mini games will be coming soon</h4>
+            </div>
+        </div> 
+        <div id = "otherGames" class="show">
+            <div id = "qbrt" class = "gameCard" onmouseover="cardAlt('qbrt')" onmouseout="cardReg('qbrt')" onmousedown=otgTest()>
+                <h3 id="qmwTitle" class="gameTitle">Q-Bert</h3>
+                <img id="qmwImg" src="./images/Qortalicon.png" alt="Qortal cube logo">
+                <h4 id="qmwDesc" class="gameDesc">AKA BlueBert by PigPig105</h4>
+            </div>
+            <div id = "qmn" class = "gameCard" onmouseover="cardAlt('qmn')" onmouseout="cardReg('qmn')" onmousedown="window.location='./games/q-man/index.html'" hidden>
+                <h3 id="qmnTitle" class="gameTitle">Q-Man</h3>
+                <img id="qmnImg" src="./images/QMNlogo.png" alt="Q Man logo">
+                <h4 id="qmnDesc" class="gameDesc">A Hangman variant where you must help Q-Man save the Qortal network.</h4>
+            </div>
+            <div id = "qsp" class = "gameCard" onmouseover="cardAlt('qsp')" onmouseout="cardReg('qsp')" onmousedown="window.location='./games/q-ship/index.html'" hidden>
                 <h3 id="qspTitle" class="gameTitle">Q-Ship</h3>
                 <img id="qspImg" src="./images/QSP-logo.png" alt="Q Ship logo">
                 <h4 id="qspDesc" class="gameDesc">A remake of the classic arcade game, Asteroids, from a Qortian perspective.</h4>
@@ -37,17 +64,17 @@
                 <img id="qmmImg" src="./images/QMWlogo.png" alt="Q Mini Mines logo">
                 <h4 id="qmmDesc" class="gameDesc">Find all the mines without blowing yourself up</h4>
             </div>
-            <div id = "qmore" class = "gameCard" onmouseover="cardAlt('qmore')" onmouseout="cardReg('qmore')">
-                <h3 id="qmoreTitle" class="gameTitle">More Games</h3>
+            <div id = "btg" class = "gameCard" onmouseover="cardAlt('btg')" onmouseout="cardReg('btg')" onmousedown="showGames()">
+                <h3 id="qmoreTitle" class="gameTitle">Q-Mini-Games</h3>
                 <img id="qmoreImg" src="./images/QMG-Logo(320x320)-Transparent.png" alt="Q Mini Games logo">
-                <h4 id="qmoreDesc" class="gameDesc">More great mini games will be coming soon</h4>
+                <h4 id="qmoreDesc" class="gameDesc">Go back to the Q-Mini-Games list</h4>
             </div>
-        </div> 
+        </div>
         
     </main>
     <footer>
         <div id="qmgLicense">
-            <img src="./images/copyright-free.png" alt="Copyright free image">  <H4>Q-Mini-Games is offered to you as-is, without license, without warrantee, and without any other promises. Donations and attributions are always apprecieciated.</H4>
+            <img src="./images/copyright-free.png" alt="Copyright free image">  <H4>Q-Mini-Games is offered to you as-is, without license, without warrantee, and without any other promises. Donations and attributions are always apprecieciated. Hello Sara</H4>
         </div>
     </footer>
     <script src="./script.js"></script>

@@ -59,6 +59,12 @@ main {
     
 
 }
+#otherGames {
+    display: none;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
 
 .gameCard {
     text-align: center;

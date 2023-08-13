@@ -9,3 +9,14 @@ function cardReg(e) {
 function cardClick(e) {
     
 }
+function showOtherGames() {
+    document.getElementById('gamesGrid1').style.display = 'none';
+    document.getElementById('otherGames').style.display = 'flex';
+}
+function showGames() {
+    document.getElementById('otherGames').style.display = 'none';
+    document.getElementById('gamesGrid1').style.display = 'flex';
+}
+function otgTest() {
+    window.location="qortal://WEBSITE/Pigpig105/qbert.html"
+}
